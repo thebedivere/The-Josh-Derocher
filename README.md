@@ -1,2 +1,2 @@
 # The Josh Derocher
-[My personal website](thejoshderocher.com), created using Materialze.css and Handlebars.
+[My personal website](http://thejoshderocher.com), created using Materialze.css and Handlebars.
