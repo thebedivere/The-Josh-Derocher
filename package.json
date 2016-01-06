@@ -1,0 +1,19 @@
+{
+  "name": "the-josh-derocher",
+  "version": "1.0.0",
+  "description": "The personal website of Josh Derocher",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thebedivere/The-Josh-Derocher.git"
+  },
+  "author": "Josh Derocher",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thebedivere/The-Josh-Derocher/issues"
+  },
+  "homepage": "https://github.com/thebedivere/The-Josh-Derocher#readme"
+}
