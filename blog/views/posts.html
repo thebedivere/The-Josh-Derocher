@@ -4,7 +4,11 @@
 <article ng-repeat="post in posts">
     <div class="card-panel teal white-text">
         <h4 class="white-text"><a href="#/post/{{ posts.indexOf(post) }}" class="white-text">{{ post.title }}</a></h4>
+        <strong>{{ post.date }} </strong>
         <p>{{ post.exerpt }}</p>
-        <a href="#/post/{{ posts.indexOf(post) }}" class="white-text">Read more &rarr;</a>
+        <a href="#/post/{{ posts.indexOf(post) }}" class="white-text valign-wrapper">
+            <p class="valign">Read more</p>
+            <i class="material-icons valign">keyboard_arrow_right</i>
+        </a>
     </div>
 </article>
