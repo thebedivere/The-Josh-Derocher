@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app" ng-controller="MainController as main">
 
 <head lang="en">
     <!-- meta -->
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Josh Derocher: Blog</title>
+    <title>{{main.title}}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -24,10 +24,11 @@
     <script src="main.ctrl.js"></script>
 </head>
 
-<body ng-app="app" ng-controller="MainController as main">
-    <div class="header">
-        <h1>{{main.title}}</h1>
-    </div> 
+<body>
+    <div class="container">
+        <div ng-view>
+        </div>
+    </div>
 </body>
 
 </html>
