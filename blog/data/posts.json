@@ -1,8 +1,0 @@
-[
-    {
-        "title" : "Hello word!",
-        "date" : "January, 7 2016",
-        "exerpt": "How could I start off a developor blog without saying this?",
-        "content": "Hello World! Welcome to my developer blog, where I'll be keeping track of what I am working on. First of all, this blog was created using Angular. Right now all of the posts are stored in a JSON file, but I'll be making improvements over time."
-    }
-]

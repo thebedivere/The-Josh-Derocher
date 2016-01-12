@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+</head>
+
+<body>
+    <h1><%= title %></h1>
+    <ng-view></ng-view>
+    <!-- scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
+    
+    <!-- Template -->
+    <script type="text/ng-template" id="/blog.html">
+        <ul>
+            <li ng-repeat="blog in blog" ng-if="blog.title">
+            <h3 ng-if="blog.title">{{ blog.title }}</h3>
+            <p ng-if="blog.body">{{ blog.body }}</p>
+            </li>
+        </ul>
+    </script>
+    <script src="/javascripts/controller.js"></script>
+</body>
+
+</html>
