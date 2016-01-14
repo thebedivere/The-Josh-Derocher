@@ -12,7 +12,7 @@ var app = express();
 
 // mongoose setup
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://root:stormbringer@127.0.0.1:27017', function(err) {
+mongoose.connect('mongodb://localhost/test', function(err) {
     if(err) {
         console.log('Connection error', err);
     } else {
@@ -68,6 +68,12 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+
+
+var http = require('http');
+var server = http.createServer(app);
+server.listen(8000);
 
 
 module.exports = app;
