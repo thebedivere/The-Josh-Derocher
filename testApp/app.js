@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var blog = require('./routes/blog');
+var post = require('./routes/post');
 var app = express();
 
 // mongoose setup
@@ -33,6 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/post', post);
 app.use('/blog', blog);
 
 

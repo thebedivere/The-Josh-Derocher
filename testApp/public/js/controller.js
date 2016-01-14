@@ -1,7 +1,7 @@
 angular.module('app', ['ngRoute'])
     // service
     .factory('Blog', ['$http', function ($http) {
-        return $http.get('/blog');
+        return $http.get('/post');
     }])
 
 // controller
