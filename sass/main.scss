@@ -1,0 +1,168 @@
+@import 'colors';
+@import "type";
+@import 'media';
+@import 'helpers';
+@import 'shadows';
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+	vertical-align: baseline;
+}
+body {
+    @include font-smoothing;
+    line-height:  1;
+    background-color: $clouds;
+    padding-top: 2em;
+}
+
+.container {
+    padding: 5%;
+    max-width: $mobile - 20px;
+}
+
+.intro {
+    margin: 2em auto;
+    h1,
+    h2,
+    p {
+        padding: .5em;
+        @include main-font;
+        @include color-text;
+    }
+    h1 {
+        font-size: 3em;
+         text-align: center;
+    }
+    h2 {
+        font-size: 1.5em;
+         text-align: center;
+    }
+
+    img {
+        display: block;
+        width: 50%;
+        margin: 2em auto;
+        @include border-radius(50%);
+    }
+
+    p {
+        font-size: 1em;
+    }
+}
+
+.work {
+    h3 {
+        padding: 1rem;
+        font-size: 2rem;
+        @include main-font;
+        @include color-text;
+        text-align: center;
+    }
+    margin: 2em auto;
+}
+
+.card {
+    h4, h5, p, ul {
+        padding: 0.5rem;
+    }
+    h4 {
+        font-size: 1.6rem;
+    }
+    h5 {
+        font-size: 1.1rem;
+    }
+    a {
+        font-size: 1rem;
+    }
+    @include shadow-1;
+    display: block;
+    background: $primary-color;
+    @include main-font;
+    @include light-text;
+    padding: 2em;
+    margin: 2em auto;
+    height: 300px;
+    max-width: 300px;
+    a,
+    a:active,
+    a:visited {
+        @include light-text;
+    }
+    a:hover {
+        color: darken($clouds, 25);
+    }
+    .more {
+        display: none;
+    }
+}
+
+footer {
+    display: block;
+    width: 100%;
+    margin: none;
+    padding: 1em;
+    ul {
+        list-style: none;
+        li {
+            margin: 1em auto;
+        }
+    }
+    background-color: $primary-color;
+    @include light-text;
+    @include main-font;
+}
+
+header {
+    @include shadow-1;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    overflow: auto;
+    nav {
+        float: left;
+        display: inline-block;
+        margin: 1em 0 1em 1em;
+        position: relative;
+        ul {
+            list-style: none;
+            li {
+                display: inline;
+                margin-right: .5em;
+                &:after {
+                    margin-left: .5em;
+                    content: " |";
+                }
+                &:last-child {
+                    &:after {
+                        content: none;
+                    }
+                }
+            }
+        }
+    }
+    .social {
+        margin: .5em .5em .5em 0;
+        position: relative;
+            float: right;
+            list-style: none;
+            display: inline-block;
+            li {
+                display: inline-block;
+                margin-left: .6em;
+                a {
+                    display:block;
+                }
+                i {
+                    
+                    @include light-text;
+                }
+                
+                }
+    }
+    background-color: $primary-color;
+    @include main-font;
+    @include light-text;
+}

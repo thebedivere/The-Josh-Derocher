@@ -9,78 +9,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>Work</li>
+                <li>Blog</li>
+            </ul>
+        </nav>
+        <ul class="social">
+            <li><a href="mailto:contact@thejoshderocher.com" title="Send me an Email"><i class="fa-envelope fa fa-2x"></i></a></li>
+            <li><a href="tel:+12078080677" title="Give me a call"><i class="fa fa-2x fa-phone"></i></a></li>
+            <li><a href="http://github.com/thebedivere" title="github"><i class="fa fa-2x fa-github"></i></a></li>
+        </ul>
+    </header>
     <div class="container">
         <!-- header -->
-        <div class="valign-wrapper header">
-            <h1 class="center-align valign teal-text">Josh Derocher</h1>
-        </div>
-        <div class="header">
-            <div>
-                <img class="responsive-img align-center circle" src="img/joshderocher.jpg">
-            </div>
-        </div>
-        <!-- / -->
-        <div class="header">
-            <p class="flow-text teal-text center-align">
-                Front-end Developer
-                <br> Freelance and contract
-                <br> Video Games Blogger
+        <div class="intro">
+            <h1>Josh Derocher</h1>
+            <h2>
+                Web Developer
+                <br>Video Games Blogger
                 <br> Writer of Fantasy and Science Fiction
-            </p>
-            <p class="flow-text teal-text center-align">
-                I'm a front-end developer in the greater Boston area. I code mostly with HTML, CSS, JavaScript, jQuery, and PHP. I work with major frameworks and libraries including Wordpress, Bootstrap, Foundation, ExpressionEngine, and Polymer. I am familiar with a variety of tools and software including Git, Grunt, Gulp, Bower, NPM, Yeoman, Brackets, Linux, the command line, Team Foundation Server, and JIRA.
-                <p class="flow-text teal-text center-align">
-                    I wrote professionally about video games for four years. I started off with a small personal blog, then I began volunteering for smaller sites, and eventually became a contributor for Destructoid, one of the biggest independently owned gaming sites. I have also contributed to Bitmob (now GamesBeat) and Front Towards Gamer.
+            </h2>
+            <img src="img/joshderocher.jpg">
+            <p>
+                I'm a front-end developer in the greater Boston area. I code mostly with HTML, CSS, and JavaScript. I've worked with major frameworks and libraries including Wordpress, Bootstrap, Foundation, ExpressionEngine, Angular, Node, and Polymer.
+                <p>
+                    I wrote professionally about video games for four years, starting with a personal blog, and later I was a contributor for Destructoid, one of the biggest independently owned gaming sites. I have also contributed to Bitmob (now GamesBeat) and Front Towards Gamer.
                 </p>
+                <p>
+                    In my free time I enjoy video games, playing the guitar, and petting my cat Boba Fett.
+                </p>
+                <p>Find me on Github, LinkedIn, send me an email, or look at my resume.</p>
         </div>
         <!-- handlebars content -->
         <div class="content-placeholder"></div>
         <!-- / -->
-        <!-- Floating Menu Button -->
-    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-        <a class="btn-floating btn-large teal lighten-2" title="Menu">
-            <i class="large material-icons">menu</i>
-        </a>
+    </div>
+    <footer>
         <ul>
-            <li><a class="btn-floating orange" href="/" title="Home"><i class="material-icons">home</i></a></li>
-            <!--<li><a class="btn-floating pink" href="/blog/" title="Blog"><i class="material-icons">mode_edit</i></a></li>-->
-            <li><a class="btn-floating blue" href="mailto:contact@thejoshderocher.com" title="Send me an Email"><i class="material-icons">mail</i></a></li>
-            <li><a class="btn-floating green" href="tel:+12078080677" title="Give me a call"><i class="material-icons">phone</i></a></li>
-            <li><a class="btn-floating red" href="http://github.com/thebedivere" title="github"><i class="fa fa-github"></i></a></li>
+            <li>Josh Derocher</li>
+            <li>contact@thejoshderocher.com</li>
+            <li>207.808.0677</li>
         </ul>
-    </div>
-        <!-- / -->
-    </div>
+    </footer>
     <!-- scripts -->
     <script id="address-template" type="text/x-handlebars-template">
-        <div class="row section">
-            {{#each this}}
-            <div class="col s12 section">
-                <div class="card-panel teal white-text">
-                    <h4 class="center-align">{{title}}</h4> {{#if date}}
-                    <h5 class="center-align">{{date}}</h5>{{/if}} {{#if link}} {{#each link}}
-                    <p class="flow-text white-text center-align">
-                        <a class="center-align white-text" href=" {{link_url}} ">{{link_title}}</a>
-                    </p>
-                    {{/each}} {{/if}}
-                    <hr> {{#if body}} {{#each body}}
-                    <p class="white-text flow-text">{{this}}</p>
-                    {{/each}} {{/if}} {{#if list}}
-                    <ul class="white-text flow-text center-align">
+        <div class="work">
+            <h3>My work</3> {{#each this}}
+            <div class="card">
+                <h4>{{title}}</h4> {{#if date}}
+                <h5>{{date}}</h5>{{/if}} {{#if link}} {{#each link}}
+                <p>
+                    <a href=" {{link_url}} ">{{link_title}}</a>
+                </p>
+                {{/each}} {{/if}}
+                <hr> {{#if body}}
+                <div class="more">
+                    {{#each body}}
+                    <p>{{this}}</p>
+                    {{/each}}
+                </div>
+                {{/if}} {{#if list}}
+                <div class="more">
+                    <ul>
                         {{#each list}}
                         <li>{{this}}</li>
                         {{/each}}
                     </ul>
-                    {{/if}}
                 </div>
+                {{/if}}
             </div>
-            {{/each}}
+        {{/each}}
         </div>
     </script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
