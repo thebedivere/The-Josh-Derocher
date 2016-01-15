@@ -1,0 +1,237 @@
+@import 'colors';
+@import "type";
+@import 'media';
+@import 'helpers';
+@import 'shadows';
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body {
+    @include font-smoothing;
+    line-height: 1;
+    background-color: $clouds;
+    padding-top: 2em;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 5%;
+    max-width: $mobile - 20px;
+}
+
+.intro {
+    margin: 2em auto;
+    h1,
+    h2,
+    p {
+        padding: .5em;
+        @include main-font;
+        @include color-text;
+        font-size: 1em;
+        line-height: 1.4em;
+    }
+    h1 {
+        font-size: 3em;
+        text-align: center;
+    }
+    h2 {
+        font-size: 1.5em;
+        text-align: center;
+        color: $alt-color;
+        line-height: 1.5em;
+    }
+    img {
+        display: block;
+        width: 50%;
+        margin: 2em auto;
+        @include border-radius(50%);
+        max-width: 10em;
+    }
+    a,
+    a:active,
+    a:visited {
+        @include color-text;
+    }
+}
+
+.work,
+.resume {
+    h3 {
+        padding: 1rem;
+        font-size: 2rem;
+        @include main-font;
+        @include color-text;
+        text-align: center;
+    }
+    margin: 2em auto;
+}
+
+.card {
+    @include shadow-1;
+    display: block;
+    background: $primary-color;
+    @include main-font;
+    @include light-text;
+    padding: 0;
+    margin: 2em auto;
+    min-height: 300px;
+    max-width: 300px;
+    @media (min-width: $tiny) {
+        width: 300px;
+    }
+    a,
+    a:active,
+    a:visited {
+        @include light-text;
+    }
+    a:hover {
+        color: darken($clouds, 25);
+    }
+    .more {
+        display: none;
+    }
+    p,
+    a,
+    h4,
+    h5,
+    ul {
+        padding: 1rem;
+    }
+    h4 {
+        font-size: 1rem;
+        font-weight: 700;
+    }
+    h5 {
+        font-size: .85rem;
+    }
+    a,
+    p,
+    ul,
+    li {
+        font-size: .85rem;
+        line-height: 1.5;
+    }
+    ul {
+        list-style: none;
+    }
+}
+
+.work-card {
+    position: relative;
+    @extend .card;
+    background-color: $clouds;
+    padding: 0;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    div {
+        width: 100%;
+        background-color: $primary-color;
+        position: absolute;
+        bottom: 0;
+        padding-bottom: .5em;
+        a,
+        h5,
+        p,
+        {
+            padding: .5rem;
+        }
+        h5 {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        a,
+        p {
+            font-size: .85rem;
+        }
+        a {
+            float: left;
+        }
+        .toggle-more {
+            float: right;
+        }
+    }
+}
+
+footer {
+    a,
+    a:active,
+    a:visited {
+        @include light-text;
+    }
+    display: block;
+    width: 100%;
+    margin: none;
+    padding: 1em;
+    ul {
+        list-style: none;
+        li {
+            margin: 1em auto;
+        }
+    }
+    background-color: $primary-color;
+    @include light-text;
+    @include main-font;
+}
+
+header {
+    a,
+    a:active,
+    a:visited {
+        @include light-text;
+    }
+    z-index: 1000;
+    @include shadow-1;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    overflow: auto;
+    nav {
+        float: left;
+        display: inline-block;
+        margin: 1em 0 1em 1em;
+        position: relative;
+        ul {
+            list-style: none;
+            li {
+                display: inline;
+                margin-right: .5em;
+                &:after {
+                    margin-left: .5em;
+                    content: " |";
+                }
+                &:last-child {
+                    &:after {
+                        content: none;
+                    }
+                }
+            }
+        }
+    }
+    .social {
+        margin: .5em 1em .5em 0;
+        position: relative;
+        float: right;
+        list-style: none;
+        display: inline-block;
+        li {
+            display: inline-block;
+            margin-left: .6em;
+            a {
+                display: block;
+            }
+            i {
+                @include light-text;
+            }
+        }
+    }
+    background-color: $primary-color;
+    @include main-font;
+    @include light-text;
+}
