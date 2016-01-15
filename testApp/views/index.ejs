@@ -18,9 +18,9 @@
     <header>
         <nav>
             <ul>
-                <li>Home</li>
-                <li>Work</li>
-                <li>Blog</li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#resume">Resume</a></li>
             </ul>
         </nav>
         <ul class="social">
@@ -29,6 +29,7 @@
             <li><a href="http://github.com/thebedivere" title="github"><i class="fa fa-2x fa-github"></i></a></li>
         </ul>
     </header>
+    <span id="home"></span>
     <div class="container">
         <!-- header -->
         <div class="intro">
@@ -40,9 +41,9 @@
             </h2>
             <img src="img/joshderocher.jpg">
             <p>
-                I'm a front-end developer in the greater Boston area. I code mostly with HTML, CSS, and JavaScript. I've worked with major frameworks and libraries including Wordpress, Bootstrap, Foundation, ExpressionEngine, Angular, Node, and Polymer.
+                I'm a front-end developer in the greater Boston area. I code mostly with HTML, CSS, and JavaScript. I've worked with major frameworks and libraries including Node, Angular, Wordpress, Bootstrap, Foundation, and Polymer.
                 <p>
-                    I wrote professionally about video games for four years, starting with a personal blog, and later I was a contributor for Destructoid, one of the biggest independently owned gaming sites. I have also contributed to Bitmob (now GamesBeat) and Front Towards Gamer.
+                    I wrote professionally about video games for four years, which included being a contributor for <a href="http://destructoid.com" target="_blank">Destructoid</a>, one of the biggest independently owned gaming sites.
                 </p>
                 <p>
                     In my free time I enjoy video games, playing the guitar, and petting my cat Boba Fett.
@@ -50,28 +51,70 @@
                 <p>Find me on Github, LinkedIn, send me an email, or look at my resume.</p>
         </div>
         <!-- handlebars content -->
-        <div class="content-placeholder"></div>
+        <span id="work"></span>
+        <div class="work-placeholder"></div>
+        <span id="resume"></span>
+        <div class="resume-placeholder"></div>
         <!-- / -->
     </div>
     <footer>
         <ul>
             <li>Josh Derocher</li>
-            <li>contact@thejoshderocher.com</li>
-            <li>207.808.0677</li>
+            <li><a href="mailto:contact@thejoshderocher.com">contact@thejoshderocher.com</a></li>
+            <li><a href="tel:207.808.0677">207.808.0677</a></li>
         </ul>
     </footer>
     <!-- scripts -->
-    <script id="address-template" type="text/x-handlebars-template">
-        <div class="work">
-            <h3>My work</3> {{#each this}}
+    <script id="resume-template" type="text/x-handlebars-template">
+        <div class="resume">
+        
+            <h3>My resume</3> 
+            {{#each this}}
             <div class="card">
                 <h4>{{title}}</h4> {{#if date}}
                 <h5>{{date}}</h5>{{/if}} {{#if link}} {{#each link}}
-                <p>
+
                     <a href=" {{link_url}} ">{{link_title}}</a>
-                </p>
+
                 {{/each}} {{/if}}
                 <hr> {{#if body}}
+                
+                    {{#each body}}
+                    <p>{{this}}</p>
+                    {{/each}}
+               
+                {{/if}} {{#if list}}
+                
+                    <ul>
+                        {{#each list}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+
+                {{/if}}
+            </div>
+        {{/each}}
+        </div>
+    </script>
+    <script id="work-template" type="text/x-handlebars-template">
+        <div class="work">
+        
+            <h3>My work</h3> 
+            {{#each this}}
+            <div class="work-card" style="background-image: url({{image}})">
+                <div>
+                    <h5>{{title}}</h5> 
+                    {{#if languages}}
+                    <p>Created with: {{#each languages}}{{this}}, {{/each}}</p>{{/if}} 
+                    {{#if link}} 
+                    {{#each link}}
+                        <a href=" {{link_url}} ">{{link_title}}</a>
+                    {{/each}} 
+                    {{/if}}
+                    
+                
+                {{#if body}}
+                <!--<a href="#" class="toggle-more">more</a>-->
                 <div class="more">
                     {{#each body}}
                     <p>{{this}}</p>
@@ -86,6 +129,8 @@
                     </ul>
                 </div>
                 {{/if}}
+                </div>
+                </div>
             </div>
         {{/each}}
         </div>
@@ -94,7 +139,8 @@
     <script>
         window.jQuery || document.write('<script src="js/vendor/jquery-{{JQUERY_VERSION}}.min.js"><\/script>')
     </script>
-    <script src="/js/main.js"></script>
+    <script src="/js/work.js"></script>
+    <script src="/js/resume.js"></script>
     <script type="text/javascript" src="/js/modernizr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
     <script type="text/javascript" src="/js/materialize.min.js"></script>

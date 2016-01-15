@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 * {
   margin: 0;
   padding: 0;
@@ -18,6 +18,7 @@ body {
   padding-top: 2em; }
 
 .container {
+  margin: 0 auto;
   padding: 5%;
   max-width: 960px; }
 
@@ -28,13 +29,17 @@ body {
   .intro p {
     padding: .5em;
     font-family: 'Roboto', sans-serif;
-    color: #009688; }
+    color: #009688;
+    font-size: 1em;
+    line-height: 1.4em; }
   .intro h1 {
     font-size: 3em;
     text-align: center; }
   .intro h2 {
     font-size: 1.5em;
-    text-align: center; }
+    text-align: center;
+    color: #e67e22;
+    line-height: 1.5em; }
   .intro img {
     display: block;
     width: 50%;
@@ -43,20 +48,25 @@ body {
     -moz-osx-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
-    border-radius: 50%; }
-  .intro p {
-    font-size: 1em; }
+    border-radius: 50%;
+    max-width: 10em; }
+  .intro a,
+  .intro a:active,
+  .intro a:visited {
+    color: #009688; }
 
-.work {
+.work,
+.resume {
   margin: 2em auto; }
-  .work h3 {
+  .work h3,
+  .resume h3 {
     padding: 1rem;
     font-size: 2rem;
     font-family: 'Roboto', sans-serif;
     color: #009688;
     text-align: center; }
 
-.card {
+.card, .work-card {
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   -ms-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -65,26 +75,69 @@ body {
   background: #009688;
   font-family: 'Roboto', sans-serif;
   color: #ecf0f1;
-  padding: 2em;
+  padding: 0;
   margin: 2em auto;
-  height: 300px;
+  min-height: 300px;
   max-width: 300px; }
-  .card h4, .card h5, .card p, .card ul {
-    padding: 0.5rem; }
-  .card h4 {
-    font-size: 1.6rem; }
-  .card h5 {
-    font-size: 1.1rem; }
-  .card a {
-    font-size: 1rem; }
-  .card a,
-  .card a:active,
-  .card a:visited {
+  @media (min-width: 300px) {
+    .card, .work-card {
+      width: 300px; } }
+  .card a, .work-card a,
+  .card a:active, .work-card a:active,
+  .card a:visited, .work-card a:visited {
     color: #ecf0f1; }
-  .card a:hover {
+  .card a:hover, .work-card a:hover {
     color: #a3b6bb; }
-  .card .more {
+  .card .more, .work-card .more {
     display: none; }
+  .card p, .work-card p,
+  .card a, .work-card a,
+  .card h4, .work-card h4,
+  .card h5, .work-card h5,
+  .card ul, .work-card ul {
+    padding: 1rem; }
+  .card h4, .work-card h4 {
+    font-size: 1rem;
+    font-weight: 700; }
+  .card h5, .work-card h5 {
+    font-size: .85rem; }
+  .card a, .work-card a,
+  .card p, .work-card p,
+  .card ul, .work-card ul,
+  .card li, .work-card li {
+    font-size: .85rem;
+    line-height: 1.5; }
+  .card ul, .work-card ul {
+    list-style: none; }
+
+.work-card {
+  position: relative;
+  background-color: #ecf0f1;
+  padding: 0;
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover; }
+  .work-card div {
+    width: 100%;
+    background-color: #009688;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: .5em; }
+    .work-card div a,
+    .work-card div h5,
+    .work-card div p {
+      padding: .5rem; }
+    .work-card div h5 {
+      font-size: 1rem;
+      font-weight: 700; }
+    .work-card div a,
+    .work-card div p {
+      font-size: .85rem; }
+    .work-card div a {
+      float: left; }
+    .work-card div .toggle-more {
+      float: right; }
 
 footer {
   display: block;
@@ -94,12 +147,17 @@ footer {
   background-color: #009688;
   color: #ecf0f1;
   font-family: 'Roboto', sans-serif; }
+  footer a,
+  footer a:active,
+  footer a:visited {
+    color: #ecf0f1; }
   footer ul {
     list-style: none; }
     footer ul li {
       margin: 1em auto; }
 
 header {
+  z-index: 1000;
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   -ms-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -111,6 +169,10 @@ header {
   background-color: #009688;
   font-family: 'Roboto', sans-serif;
   color: #ecf0f1; }
+  header a,
+  header a:active,
+  header a:visited {
+    color: #ecf0f1; }
   header nav {
     float: left;
     display: inline-block;
@@ -127,7 +189,7 @@ header {
         header nav ul li:last-child:after {
           content: none; }
   header .social {
-    margin: .5em .5em .5em 0;
+    margin: .5em 1em .5em 0;
     position: relative;
     float: right;
     list-style: none;
