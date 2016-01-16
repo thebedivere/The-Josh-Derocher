@@ -1,3 +1,8 @@
+$large: 1200px;
 $mobile: 980px;
-$tiny: 300px;
-
+$tiny: 400px;
+.large-hide {
+    @media (min-width: $mobile) {
+        display: none!important;
+    }
+}

@@ -1,7 +1,5 @@
 'use strict';
 module.exports = function (grunt) {
-
-
     require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.initConfig({
