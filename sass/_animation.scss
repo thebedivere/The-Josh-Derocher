@@ -6,10 +6,8 @@
     transform: $values;
 }
 
-
-
 @mixin translate ($x, $y) {
-   @include transform(translate($x, $y));
+    @include transform(translate($x, $y));
 }
 
 @mixin transition($values) {
@@ -34,3 +32,9 @@
     @include transition(0.5s ease-in-out);
 }
 
+.hover {
+    transition: color 0.4s ease;
+    &:hover {
+        color: darken($primary-color, 10);
+    }
+}

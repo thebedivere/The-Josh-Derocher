@@ -41,6 +41,7 @@
     a,
     a:active,
     a:visited {
+         @extend .hover;
         @include color-text;
     }
     ul {

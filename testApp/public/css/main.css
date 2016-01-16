@@ -30,6 +30,28 @@
   -o-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out; }
 
+.hover, .intro a,
+.intro a:active,
+.intro a:visited, .card-container .more .toggle-less, .card a, .work-card a,
+.card a:active, .work-card a:active,
+.card a:visited, .work-card a:visited, .work-card div a, .work-card div .toggle-more, header a,
+header a:link,
+header a:active,
+header a:visited, header nav ul li a,
+header nav ul li a:link,
+header nav ul li a:active,
+header nav ul li a:visited, header .social li a,
+header .social li a:active,
+header .social li a:visited, header .social li i, footer a,
+footer a:active,
+footer a:visited {
+  transition: color 0.4s ease; }
+  .hover:hover, .intro a:hover, .card-container .more .toggle-less:hover, .card a:hover, .work-card a:hover, .work-card div .toggle-more:hover, header a:hover,
+  header nav ul li a:hover:link,
+  header nav ul li a:hover:active,
+  header nav ul li a:hover:visited, header .social li a:hover, header .social li i:hover, footer a:hover {
+    color: #00635a; }
+
 .intro {
   margin: 0 auto 2em auto; }
   .intro h1,
@@ -157,8 +179,6 @@
   .card a:active, .work-card a:active,
   .card a:visited, .work-card a:visited {
     color: #ecf0f1; }
-  .card a:hover, .work-card a:hover {
-    color: #a3b6bb; }
   .card p, .work-card p,
   .card a, .work-card a,
   .card h4, .work-card h4,
@@ -235,6 +255,7 @@ header {
   header .container {
     padding: 0; }
   header a,
+  header a:link,
   header a:active,
   header a:visited {
     color: #ecf0f1; }
@@ -247,6 +268,12 @@ header {
       list-style: none; }
       header nav ul li {
         display: inline; }
+        header nav ul li a,
+        header nav ul li a:link,
+        header nav ul li a:active,
+        header nav ul li a:visited {
+          color: #ecf0f1;
+          text-decoration: none; }
         header nav ul li:after {
           margin: 0 .5em;
           content: " |"; }
@@ -261,7 +288,9 @@ header {
     header .social li {
       display: inline-block;
       margin-left: .6em; }
-      header .social li a {
+      header .social li a,
+      header .social li a:active,
+      header .social li a:visited {
         display: block; }
       header .social li i {
         color: #ecf0f1; }
@@ -306,10 +335,12 @@ footer {
   display: block;
   width: 100%;
   margin: none;
-  padding: 0;
+  padding: 2em;
   background-color: #009688;
   color: #ecf0f1;
   font-family: 'Roboto', sans-serif; }
+  footer .container {
+    padding: 0; }
   footer a,
   footer a:active,
   footer a:visited {

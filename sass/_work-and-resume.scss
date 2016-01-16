@@ -26,6 +26,7 @@
         height: 300px;
         padding: 0;
         .toggle-less {
+            @extend .hover;
             position: absolute;
             right: .5em;
             bottom: 1em;
@@ -50,10 +51,8 @@
     a,
     a:active,
     a:visited {
+        @extend .hover;
         @include light-text;
-    }
-    a:hover {
-        color: darken($clouds, 25);
     }
     p,
     a,
@@ -118,8 +117,10 @@
         }
         a {
             float: left;
+            @extend .hover;
         }
         .toggle-more {
+            @extend .hover;
             float: right;
             text-decoration: underline;
         }
