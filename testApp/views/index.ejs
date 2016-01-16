@@ -16,6 +16,11 @@
 
 <body>
     <header>
+        <ul class="social">
+            <li><a href="mailto:contact@thejoshderocher.com" title="Send me an Email"><i class="fa-envelope fa fa-2x"></i></a></li>
+            <li class="large-hide"><a href="tel:+12078080677" title="Give me a call"><i class="fa fa-2x fa-phone"></i></a></li>
+            <li><a href="http://github.com/thebedivere" title="github"><i class="fa fa-2x fa-github"></i></a></li>
+        </ul>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -23,11 +28,7 @@
                 <li><a href="#resume">Resume</a></li>
             </ul>
         </nav>
-        <ul class="social">
-            <li><a href="mailto:contact@thejoshderocher.com" title="Send me an Email"><i class="fa-envelope fa fa-2x"></i></a></li>
-            <li><a href="tel:+12078080677" title="Give me a call"><i class="fa fa-2x fa-phone"></i></a></li>
-            <li><a href="http://github.com/thebedivere" title="github"><i class="fa fa-2x fa-github"></i></a></li>
-        </ul>
+
     </header>
     <span id="home"></span>
     <div class="container">
@@ -35,9 +36,11 @@
         <div class="intro">
             <h1>Josh Derocher</h1>
             <h2>
-                Web Developer
-                <br>Video Games Blogger
-                <br> Writer of Fantasy and Science Fiction
+                <ul>
+                    <li>Web&nbsp;Developer</li>
+                    <li>Video&nbsp;Games&nbsp;Blogger</li>
+                    <li>Writer&nbsp;of&nbsp;Fantasy and Science&nbsp;Fiction</li>
+                </ul>
             </h2>
             <img src="img/joshderocher.jpg">
             <p>
@@ -48,7 +51,7 @@
                 <p>
                     In my free time I enjoy video games, playing the guitar, and petting my cat Boba Fett.
                 </p>
-                <p>Find me on Github, LinkedIn, send me an email, or look at my resume.</p>
+                <p>Find me on <a href="http://github.com/thebedivere" target="_blank">Github</a>, <a href="https://www.linkedin.com/in/thejoshderocher" target="_blank">LinkedIn</a>, send me an <a href="mailto:contact@thejoshderocher.com" target="_blank">email</a>, or look at my <a href="#resume" target="_blank">resume</a>.</p>
         </div>
         <!-- handlebars content -->
         <span id="work"></span>
@@ -58,67 +61,59 @@
         <!-- / -->
     </div>
     <footer>
+        <div class="container">
         <ul>
             <li>Josh Derocher</li>
             <li><a href="mailto:contact@thejoshderocher.com">contact@thejoshderocher.com</a></li>
             <li><a href="tel:207.808.0677">207.808.0677</a></li>
         </ul>
+        </div>
     </footer>
     <!-- scripts -->
     <script id="resume-template" type="text/x-handlebars-template">
+        <h3>My resume</h3>
         <div class="resume">
-        
-            <h3>My resume</3> 
             {{#each this}}
             <div class="card">
                 <h4>{{title}}</h4> {{#if date}}
                 <h5>{{date}}</h5>{{/if}} {{#if link}} {{#each link}}
 
-                    <a href=" {{link_url}} ">{{link_title}}</a>
+                <a href=" {{link_url}} ">{{link_title}}</a> {{/each}} {{/if}}
+                <hr> {{#if body}} {{#each body}}
+                <p>{{this}}</p>
+                {{/each}} {{/if}} {{#if list}}
 
-                {{/each}} {{/if}}
-                <hr> {{#if body}}
-                
-                    {{#each body}}
-                    <p>{{this}}</p>
+                <ul>
+                    {{#each list}}
+                    <li>{{this}}</li>
                     {{/each}}
-               
-                {{/if}} {{#if list}}
-                
-                    <ul>
-                        {{#each list}}
-                        <li>{{this}}</li>
-                        {{/each}}
-                    </ul>
+                </ul>
 
                 {{/if}}
             </div>
-        {{/each}}
+
+            {{/each}}
         </div>
     </script>
     <script id="work-template" type="text/x-handlebars-template">
+        <h3>My work</h3>
         <div class="work">
-        
-            <h3>My work</h3> 
             {{#each this}}
-            <div class="work-card" style="background-image: url({{image}})">
-                <div>
-                    <h5>{{title}}</h5> 
-                    {{#if languages}}
-                    <p>Created with: {{#each languages}}{{this}}, {{/each}}</p>{{/if}} 
-                    {{#if link}} 
-                    {{#each link}}
-                        <a href=" {{link_url}} ">{{link_title}}</a>
-                    {{/each}} 
-                    {{/if}}
-                    
-                
+            <div class="card-container">
+                <div class="work-card" id="card-{{@index}}" style="background-image: url({{image}})">
+                    <div>
+                        <h5>{{title}}</h5> {{#if languages}}
+                        <p>Created with: {{#each languages}}{{this}}, {{/each}}</p>{{/if}} {{#if link}} {{#each link}}
+                        <a href=" {{link_url}} ">{{link_title}}</a> {{/each}} {{/if}} {{#if body}}
+                        <a class="toggle-more" id="toggle-{{@index}}">more</a> {{/if}}
+                    </div>
+                </div>
                 {{#if body}}
-                <!--<a href="#" class="toggle-more">more</a>-->
-                <div class="more">
+                <div class="more" id="more">
                     {{#each body}}
                     <p>{{this}}</p>
                     {{/each}}
+                    <a class="toggle-less" id="toggle-less">less</a>
                 </div>
                 {{/if}} {{#if list}}
                 <div class="more">
@@ -129,10 +124,8 @@
                     </ul>
                 </div>
                 {{/if}}
-                </div>
-                </div>
             </div>
-        {{/each}}
+            {{/each}}
         </div>
     </script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -144,6 +137,7 @@
     <script type="text/javascript" src="/js/modernizr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
     <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <script src="/js/animation.js"></script>
 </body>
 
 </html>
