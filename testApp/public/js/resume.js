@@ -47,46 +47,8 @@ $(function () {
                     link_url: "https://www.destructoid.com/",
                     link_title: "www.destructoid.com"
             }],
-            body: ["Destructoid is one of the largest independent video game blogs, with an average of 3 million monthly pageviews. It is well regarded by the gaming community at large, and quotes from our reviews have been featured in advertising for big titles like The Last of Us, Saint’s Row the Third, Forza Motorsport, Luigi’s Mansion: Dark Moon, and tons of other games.", 
-                   "Over my three years working for the site, I reviewed PC games including SimCity, Company of Heroes 2, and X Rebirth. I covered the latest news and wrote opinion pieces. I am familiar with the gaming industry, and I’ve spent time with developers and other press members at industry events.",
+            body: ["Destructoid is one of the largest independent video game blogs, with an average of 3 million monthly pageviews. Over my three years working for the site, I reviewed PC games including SimCity, Company of Heroes 2, and X Rebirth.",
                   "My writing has also been published on BitMob and Front Towards Gamer."]
-        },
-        {
-            title: "Proficient Languages and Software",
-            list: [
-
-                'HTML',
-                'CSS',
-                'JavaScript',
-                'jQuery',
-                'Linux',
-                'Apache2',
-                'MYSQL',
-                'PHP',
-                'Handlebars',
-                'Bootstrap',
-                'Foundation',
-                'Bourbon.io',
-                'Jade',
-                'ExpressionEngine',
-                'Wordpress (Plugins and themes)',
-                'Tumblr (Themes)',
-                'Git',
-                'NPM',
-                'Grunt',
-                'Gulp',
-                'Bower',
-                'Yeoman',
-                'SASS',
-                'Less',
-                'Audacity',
-                'Photoshop',
-                'Gimp',
-                'Google Docs'
-
-
-            ]
-
         }
           ];
 
