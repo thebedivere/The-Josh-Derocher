@@ -29,15 +29,16 @@ body {
     @media (min-width: $large) {
         max-width: 1000px;
     }
-        h3 {
-        padding: 2rem 1rem 1rem 1rem;
-        font-size: 2rem;
-        @include main-font;
-        @include color-text;
-        text-align: center;
-            @media (min-width: $mobile) {
-                padding-top: 3rem;
-            }
+}
+
+h3 {
+    padding: 2rem 1rem 1rem 1rem;
+    font-size: 2rem;
+    @include main-font;
+    @include color-text;
+    text-align: center;
+    @media (min-width: $mobile) {
+        padding-top: 3rem;
     }
 }
 

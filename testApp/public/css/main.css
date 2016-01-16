@@ -31,7 +31,7 @@
   transition: 0.5s ease-in-out; }
 
 .intro {
-  margin: 2em auto; }
+  margin: 0 auto 2em auto; }
   .intro h1,
   .intro h2,
   .intro p {
@@ -232,6 +232,8 @@ header {
   background-color: #009688;
   font-family: 'Roboto', sans-serif;
   color: #ecf0f1; }
+  header .container {
+    padding: 0; }
   header a,
   header a:active,
   header a:visited {
@@ -263,26 +265,6 @@ header {
         display: block; }
       header .social li i {
         color: #ecf0f1; }
-  @media (min-width: 980px) {
-    header {
-      width: auto;
-      right: 1em; }
-      header .social {
-        box-sizing: border-box;
-        padding: 1rem;
-        margin: 0 auto;
-        display: inline-block;
-        float: none;
-        text-align: center;
-        width: 100%; }
-        header .social li {
-          font-size: 1.1em;
-          margin: 0 1em; }
-      header nav {
-        padding: 1rem;
-        margin: 0;
-        display: block;
-        float: none; } }
 
 * {
   margin: 0;
@@ -309,15 +291,16 @@ body {
   @media (min-width: 1200px) {
     .container {
       max-width: 1000px; } }
-  .container h3 {
-    padding: 2rem 1rem 1rem 1rem;
-    font-size: 2rem;
-    font-family: 'Roboto', sans-serif;
-    color: #009688;
-    text-align: center; }
-    @media (min-width: 980px) {
-      .container h3 {
-        padding-top: 3rem; } }
+
+h3 {
+  padding: 2rem 1rem 1rem 1rem;
+  font-size: 2rem;
+  font-family: 'Roboto', sans-serif;
+  color: #009688;
+  text-align: center; }
+  @media (min-width: 980px) {
+    h3 {
+      padding-top: 3rem; } }
 
 footer {
   display: block;
