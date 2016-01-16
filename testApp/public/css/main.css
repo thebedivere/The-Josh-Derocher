@@ -31,6 +31,7 @@
   transition: 0.5s ease-in-out; }
 
 .hover, .intro a,
+.intro a:link,
 .intro a:active,
 .intro a:visited, .card-container .more .toggle-less, .card a, .work-card a,
 .card a:active, .work-card a:active,
@@ -50,7 +51,7 @@ footer a:visited {
   header nav ul li a:hover:link,
   header nav ul li a:hover:active,
   header nav ul li a:hover:visited, header .social li a:hover, header .social li i:hover, footer a:hover {
-    color: #00635a; }
+    color: #00635a !important; }
 
 .intro {
   margin: 0 auto 2em auto; }
@@ -95,6 +96,7 @@ footer a:visited {
         float: left;
         margin: 0 4em 2em 0; } }
   .intro a,
+  .intro a:link,
   .intro a:active,
   .intro a:visited {
     color: #009688; }
