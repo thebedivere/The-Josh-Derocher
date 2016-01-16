@@ -3,8 +3,10 @@ header {
         padding: 0;
     }
     a,
+    a:link,
     a:active,
     a:visited {
+        @extend .hover;
         @include light-text;
     }
     z-index: 1000;
@@ -21,8 +23,15 @@ header {
         ul {
             list-style: none;
             li {
+                a,
+                a:link,
+                a:active,
+                a:visited {
+                    @extend .hover;
+                    @include light-text;
+                    text-decoration: none;
+                }
                 display: inline;
-                
                 &:after {
                     margin: 0 .5em;
                     content: " |";
@@ -44,10 +53,14 @@ header {
         li {
             display: inline-block;
             margin-left: .6em;
-            a {
+            a,
+            a:active,
+            a:visited {
+                @extend .hover;
                 display: block;
             }
             i {
+                @extend .hover;
                 @include light-text;
             }
         }
