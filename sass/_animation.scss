@@ -35,6 +35,6 @@
 .hover {
     transition: color 0.4s ease;
     &:hover {
-        color: darken($primary-color, 10);
+        color: darken($primary-color, 10)!important;
     }
 }
