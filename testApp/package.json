@@ -14,5 +14,9 @@
     "mongoose": "^4.3.5",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "body-parser": "^1.13.3",
+    "jsonwebtoken": "^5.5.4"
   }
 }

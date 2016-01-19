@@ -7,6 +7,8 @@
 @import 'intro';
 @import 'work-and-resume';
 @import 'header';
+@import 'blog';
+
 * {
     margin: 0;
     padding: 0;
@@ -20,9 +22,11 @@ body {
     line-height: 1;
     background-color: $clouds;
     padding-top: 2em;
+    height: 100%;
 }
 
 .container {
+    height: 100%;
     margin: 0 auto;
     padding: 5%;
     max-width: $mobile - 20px;
@@ -43,19 +47,18 @@ h3 {
 }
 
 footer {
-    .container {
-        padding: 0;
-    }
+    width: 100%;
+    display: block;
+    padding: 2em;
+    margin: 0;
+    padding: 0;
     a,
     a:active,
     a:visited {
         @include light-text;
         @extend .hover;
     }
-    display: block;
-    width: 100%;
-    margin: none;
-    padding: 2em;
+
     ul {
         list-style: none;
         li {
