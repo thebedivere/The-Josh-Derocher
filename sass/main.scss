@@ -49,9 +49,15 @@ h3 {
 footer {
     width: 100%;
     display: block;
-    padding: 2em;
+    padding: 0;
     margin: 0;
     padding: 0;
+    background-color: $primary-color;
+    @include light-text;
+    @include main-font;
+    .container {
+        padding: .5em;
+    }
     a,
     a:active,
     a:visited {
@@ -65,7 +71,5 @@ footer {
             margin: 1em auto;
         }
     }
-    background-color: $primary-color;
-    @include light-text;
-    @include main-font;
+
 }
