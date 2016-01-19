@@ -8,26 +8,36 @@ angular.module('app', ['ngRoute'])
 .controller('BlogController', ['$scope', 'Blog', function ($scope, Blog) {
         Blog.success(function (data) {
             $scope.blog = data;
-            console.log(data);
+
         }).error(function (data, status) {
             console.log(data, status);
             $scope.blog = [];
         });
     }])
     // edit
-    .controller('EditController', ['$scope', '$http', function ($scope, $http) {
+    .controller('EditController', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
         $scope.formData = {};
         $scope.createPost = function () {
             $http.post('/post', $scope.formData)
                 .success(function (data) {
+                $scope.submissionSuccess = true;
+                    $scope.alertText = "Success";
                     $scope.formData = {};
                     $scope.post = data;
-                    console.log(data);
+                    $timeout(callTimeout, 5000);
                 })
                 .error(function (data) {
+                    $scope.alertText = 'Error: ' + data;
+                    $scope.submissionSuccess = true;
                     console.log('Error: ' + data);
+                    $timeout(callTimeout, 5000);
                 });
         };
+
+        function callTimeout() {
+           $scope.submissionSuccess = false;
+        }
+
     }])
     // routes
 

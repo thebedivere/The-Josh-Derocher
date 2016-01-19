@@ -1,39 +1,5 @@
-<!doctype html>
-<html class="no-js" lang="" ng-app="app">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Josh Derocher: A really hoopy frood</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <script src="/js/showdown.min.js"></script>
-</head>
-
-<body ng-controller="EditController">
-    <header>
-        <div class="container">
-            <ul class="social">
-                <li><a href="mailto:contact@thejoshderocher.com" title="Send me an Email"><i class="fa-envelope fa fa-2x"></i></a></li>
-                <li class="large-hide"><a href="tel:+12078080677" title="Give me a call"><i class="fa fa-2x fa-phone"></i></a></li>
-                <li><a href="http://github.com/thebedivere" title="github"><i class="fa fa-2x fa-github"></i></a></li>
-            </ul>
-            <nav>
-                <ul>
-                    <li><a href="../#home">Home</a></li>
-                    <li><a href="../#work">Work</a></li>
-                    <li><a href="../#resume">Resume</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <span id="home"></span>
-    <div class="container">
+<% include ../partials/header %>
+    <div class="container" ng-controller="EditController">
         <div class="edit">
             <form novalidate>
                 <label for="title">Title</label>
@@ -49,25 +15,15 @@
             </div>
         </div>
         <ng-view class="blog-post"></ng-view>
+        <div class="toast" ng-show="submissionSuccess">
+<p>{{alertText}}</p>
+</div>
     </div>
-    <footer>
-        <div class="container">
-            <ul>
-                <li>Josh Derocher</li>
-                <li><a href="mailto:contact@thejoshderocher.com">contact@thejoshderocher.com</a></li>
-                <li><a href="tel:207.808.0677">207.808.0677</a></li>
-            </ul>
-        </div>
-    </footer>
-    <!-- scripts -->
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
+
+<!-- toast sample -->
 
     <!-- Template -->
-    <script src="/js/controller.js"></script>
-    <script src="/js/animation.js"></script>
-
-</body>
-
-</html>
+    <% include ../partials/scripts %>
+        <script src="/js/controller.js"></script>
+        <script src="/js/animation.js"></script>
+        <% include ../partials/footer %>

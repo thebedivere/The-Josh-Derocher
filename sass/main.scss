@@ -8,6 +8,8 @@
 @import 'work-and-resume';
 @import 'header';
 @import 'blog';
+@import 'error';
+@import 'toast';
 
 * {
     margin: 0;
@@ -18,6 +20,7 @@
 }
 
 body {
+    position: relative;
     @include font-smoothing;
     line-height: 1;
     background-color: $clouds;
@@ -47,10 +50,12 @@ h3 {
 }
 
 footer {
+    position: absolute;
+    bottom: -10em;
     width: 100%;
     display: block;
     padding: 0;
-    margin: 0;
+    margin: 2em 0 0 0;
     padding: 0;
     background-color: $primary-color;
     @include light-text;

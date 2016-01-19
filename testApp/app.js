@@ -21,6 +21,7 @@ app.use(logger('dev'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //routes
+
 var routes = require('./routes/index');
 var blog = require('./routes/blog');
 var edit = require('./routes/edit');
@@ -95,8 +96,6 @@ mongoose.connect(database_uri, function(err) {
 // user set up
 
 var port = process.env.PORT || 8000;
-
-
 
 
 module.exports = app;
