@@ -9,7 +9,7 @@
 }
 
 @mixin dark-text {
-    color: $asbestos;
+    color: darken($asbestos, 10);
 }
 
 @mixin color-text {
