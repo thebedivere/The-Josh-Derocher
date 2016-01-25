@@ -16,6 +16,10 @@ header {
     width: 100%;
     overflow: auto;
     nav {
+        @media (min-width: $tiny) {
+            font-size: 1em;
+        }
+        font-size: .8em;
         float: left;
         display: inline-block;
         margin: 1em 0 1em 1em;
@@ -45,6 +49,10 @@ header {
         }
     }
     .social {
+        @media (min-width: $tiny) {
+            font-size: 1em;
+        }
+        font-size: .8em;
         margin: .5em 1em .5em 0;
         position: relative;
         float: right;

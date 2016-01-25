@@ -5,13 +5,12 @@
         <div class="intro">
             <h1>Josh Derocher</h1>
             <h2>
-                <ul>
-                    <li>Web&nbsp;Developer</li>
-                    <li>Video&nbsp;Games&nbsp;Blogger</li>
-                    <li>Writer&nbsp;of&nbsp;Fantasy and Science&nbsp;Fiction</li>
-                </ul>
+ 
+                <span>Web&nbsp;Developer</span>
+                <span>Video&nbsp;Games&nbsp;Blogger</span>
+                <span>Fantasy &amp; Sci-Fi Writer</span>
             </h2>
-            <img src="img/joshderocher.jpg">
+            <img src="img/joshderocher.jpg" alt="Josh Derocher">
             <p>
                 I'm a front-end developer in the greater Boston area. I code mostly with HTML, CSS, and JavaScript. I've worked with major frameworks and libraries including Node, Angular, Wordpress, Bootstrap, Foundation, and Polymer.
                 <p>
@@ -29,12 +28,20 @@
         <div class="resume-placeholder"></div>
         <!-- / -->
     </div>
+    
     <% include ../partials/scripts %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+    <script>
+    // upcase helper
+    Handlebars.registerHelper('uppercase', function(string) {
+        return ( string || '' ).charAt(0).toUpperCase() + string.slice(1);
+  throw new Handlebars.Exception('Unknown field: ' + options.name);
+}); </script>
     <!-- scripts -->
     <script id="resume-template" type="text/x-handlebars-template">
         <h3>My resume</h3>
+        <a class="download" href="./joshderocherresume.pdf" download>Download a PDF version</a>
         <div class="resume">
+        
             {{#each this}}
             <div class="card">
                 <h4>{{title}}</h4> {{#if date}}
@@ -43,15 +50,14 @@
                 <a href=" {{link_url}} ">{{link_title}}</a> {{/each}} {{/if}}
                 <hr> {{#if body}} {{#each body}}
                 <p>{{this}}</p>
-                {{/each}} {{/if}} {{#if list}}
+                {{/each}} {{/if}}
 
-                <ul>
-                    {{#each list}}
-                    <li>{{this}}</li>
-                    {{/each}}
-                </ul>
-
+                {{#if languages}}
+                <p><strong>SKILLS USED:</strong> 
+                {{#each languages}}{{uppercase this}}{{#unless @last}},&nbsp;{{/unless}}                         
+                {{/each}}</p>
                 {{/if}}
+
             </div>
 
             {{/each}}
@@ -65,7 +71,8 @@
                 <div class="work-card" id="card-{{@index}}" style="background-image: url({{image}})">
                     <div>
                         <h5>{{title}}</h5> {{#if languages}}
-                        <p>Created with: {{#each languages}}{{this}}, {{/each}}</p>{{/if}} {{#if link}} {{#each link}}
+                        <p><strong>CREATED USING:</strong> {{#each languages}}{{uppercase this}}{{#unless @last}},&nbsp;{{/unless}}
+                        {{/each}}</p>{{/if}} {{#if link}} {{#each link}}
                         <a href=" {{link_url}} ">{{link_title}}</a> {{/each}} {{/if}} {{#if body}}
                         <a class="toggle-more" id="toggle-{{@index}}">more</a> {{/if}}
                     </div>
@@ -75,7 +82,7 @@
                     {{#each body}}
                     <p>{{this}}</p>
                     {{/each}}
-                    <a class="toggle-less" id="toggle-less">less</a>
+                    <a class="toggle-less" id="toggle-less-{{@index}}">less</a>
                 </div>
                 {{/if}} {{#if list}}
                 <div class="more">

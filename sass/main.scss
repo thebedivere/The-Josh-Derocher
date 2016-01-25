@@ -20,6 +20,7 @@
 }
 
 body {
+    font-size: 16px;
     position: relative;
     @include font-smoothing;
     line-height: 1;
@@ -31,8 +32,10 @@ body {
 .container {
     height: 100%;
     margin: 0 auto;
-    padding: 5%;
-    max-width: $mobile - 20px;
+    @media (min-width: $tiny) {
+        padding: 5%;
+        max-width: $mobile - 20px;
+    }
     @media (min-width: $large) {
         max-width: 1000px;
     }
@@ -47,6 +50,10 @@ h3 {
     @media (min-width: $mobile) {
         padding-top: 3rem;
     }
+}
+
+strong {
+    font-weight: 700;
 }
 
 footer {
