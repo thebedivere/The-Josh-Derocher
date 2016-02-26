@@ -61,19 +61,28 @@ footer a:visited {
     color: #00635a !important; }
 
 .intro {
+  overflow: auto;
   margin: 0 auto; }
   .intro h1,
   .intro h2,
   .intro p {
     font-family: 'Roboto', sans-serif;
     color: #009688; }
-  .intro p {
-    line-height: 1.3em;
-    padding: 0 1em 1em; }
+  .intro .intro-text {
+    width: 100%;
+    box-sizing: border-box;
+    display: block; }
     @media (min-width: 980px) {
-      .intro p {
-        font-size: 1.2em;
-        line-height: 1.5em; } }
+      .intro .intro-text {
+        float: right;
+        max-width: 69%; } }
+    .intro .intro-text p {
+      line-height: 1.3em;
+      padding: 0 1em 1em; }
+      @media (min-width: 980px) {
+        .intro .intro-text p {
+          font-size: 1.2em;
+          line-height: 1.5em; } }
   .intro h1 {
     margin-top: .75em;
     font-size: 2.5em;
@@ -102,21 +111,22 @@ footer a:visited {
       .intro h2 {
         margin-bottom: 1em; } }
   .intro img {
-    display: block;
     width: 50%;
-    margin: 0 auto 1rem;
+    margin: 0 auto 2em;
     -webkit-border-radius: 50%;
     -moz-osx-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     border-radius: 50%;
-    max-width: 10em; }
+    max-width: 10em;
+    display: block;
+    box-sizing: border-box; }
     @media (min-width: 980px) {
       .intro img {
         max-width: 15em;
         display: inline;
         float: left;
-        margin: 0 4em 6em 0; } }
+        margin: 0; } }
   .intro a,
   .intro a:link,
   .intro a:active,
@@ -196,6 +206,7 @@ footer a:visited {
 
 .card-container {
   margin: 2em auto;
+  padding: .5em;
   height: 300px;
   width: 100%; }
   @media (min-width: 400px) {

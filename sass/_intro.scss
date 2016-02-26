@@ -1,4 +1,5 @@
 .intro {
+    overflow: auto;
     margin: 0 auto;
     h1,
     h2,
@@ -6,13 +7,22 @@
         @include main-font;
         @include color-text;
     }
-    p {
+    .intro-text {
+        width: 100%;
+        box-sizing: border-box;
+        display: block;
         @media (min-width: $mobile) {
-            font-size: 1.2em;
-            line-height: 1.5em;
+            float: right;
+            max-width: 69%;
         }
-        line-height: 1.3em;
-        padding: 0 1em 1em;
+        p {
+            @media (min-width: $mobile) {
+                font-size: 1.2em;
+                line-height: 1.5em;
+            }
+            line-height: 1.3em;
+            padding: 0 1em 1em;
+        }
     }
     h1 {
         margin-top: .75em;
@@ -44,17 +54,18 @@
         line-height: 1.5em;
     }
     img {
-        display: block;
         width: 50%;
-        margin: 0 auto 1rem;
+        margin: 0 auto 2em;
         @include border-radius(50%);
         max-width: 10em;
+        display: block;
         @media (min-width: $mobile) {
             max-width: 15em;
             display: inline;
             float: left;
-            margin: 0 4em 6em 0;
+            margin: 0;
         }
+        box-sizing: border-box;
     }
     a,
     a:link,

@@ -1,9 +1,12 @@
-angular.module('app', ['ngRoute'])
+angular.module('myApp', [
+    'ngRoute',
+    'myApp.index',
+    'myApp.blog',
+])
     // service
     .factory('Blog', ['$http', function ($http) {
         return $http.get('/post');
     }])
-
 // blog controller
 .controller('BlogController', ['$scope', 'Blog', function ($scope, Blog) {
         Blog.success(function (data) {
@@ -33,21 +36,10 @@ angular.module('app', ['ngRoute'])
                     $timeout(callTimeout, 5000);
                 });
         };
-
         function callTimeout() {
            $scope.submissionSuccess = false;
         }
-
     }])
-    // routes
-
-.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider
-        .when('/', {
-            templateUrl: '/blog.html',
-            controller: 'BlogController'
-        });
-         }])
 
 .filter('capitalize', function () {
     return function (input, all) {

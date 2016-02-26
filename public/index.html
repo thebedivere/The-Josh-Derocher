@@ -1,0 +1,64 @@
+<!doctype html>
+<html class="no-js" lang="" ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Josh Derocher: A really hoopy frood</title>
+    <meta name="description" content="The website of Josh Derocher">
+    <meta name="author" content="Josh Derocher">
+    <meta name="theme-color" content="#009688">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="favicon-152.png">
+    <link rel="icon" sizes="152x152" href="favicon-152.png">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <ul class="social">
+                <li><a href="mailto:contact@thejoshderocher.com" title="Send me an Email"><i class="fa-envelope fa fa-2x"></i></a></li>
+                <li class="large-hide"><a href="tel:+12078080677" title="Give me a call"><i class="fa fa-2x fa-phone"></i></a></li>
+                <li><a href="http://github.com/thebedivere" title="github"><i class="fa fa-2x fa-github"></i></a></li>
+            </ul>
+            <nav>
+                <ul>
+                    <li><a href="#/home">Home</a></li>
+                    <li><a href="#/home/#work">Work</a></li>
+                    <li><a href="#/home/#resume">Resume</a></li>
+                    <li><a href="#/blog">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <ng-view></ng-view>
+    </div>
+
+    <script src="components/handlebars/handlebars.min.js"></script>
+    <script src="components/jquery/dist/jquery.js"></script>
+    <script src="components/angular/angular.js"></script>
+    <script src="components/showdown/dist/showdown.min.js"></script>
+    <script src="components/angular-animate/angular-animate.min.js"></script>
+    <script src="components/angular-route/angular-route.min.js"></script>
+    
+    <script src="js/animation.js"></script>
+    <script src="blog/blog.js"></script>
+    <script src="home/home.js"></script>
+    <script src="app.js"></script>
+    <footer>
+        <div class="container">
+            <ul>
+                <li>Josh Derocher</li>
+                <li><a href="mailto:contact@thejoshderocher.com">contact@thejoshderocher.com</a></li>
+                <li><a href="tel:207.808.0677">207.808.0677</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+
+</html>
