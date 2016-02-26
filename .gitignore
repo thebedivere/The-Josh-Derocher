@@ -1,5 +1,5 @@
-/node_modules/
-/bower_components/
+/node_modules/*
+/bower_components/*
 /src/
-/testApp/node_modules/
-/public/components/
+/testApp/node_modules/*
+/public/components/*
