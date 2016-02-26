@@ -9,7 +9,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    './testApp/public/css/main.css': './sass/main.scss'
+                    './public/css/main.css': './sass/main.scss'
                 }
             }
         },

@@ -71,21 +71,42 @@ var server = http.createServer(app);
 server.listen(8000);
 
 
+// MongoDB
+var Db = require('mongodb').Db,
+    MongoClient = require('mongodb').MongoClient,
+    Server = require('mongodb').Server,
+    ReplSetServers = require('mongodb').ReplSetServers,
+    ObjectID = require('mongodb').ObjectID,
+    Binary = require('mongodb').Binary,
+    GridStore = require('mongodb').GridStore,
+    Grid = require('mongodb').Grid,
+    Code = require('mongodb').Code,
+    BSON = require('mongodb').BSON,
+    assert = require('assert');
+
+var db = new Db('josh', new Server('localhost', 27017));
+// Fetch a collection to insert document into
+db.open(function(err, db) {
+  var collection = db.collection("blog_posts");
+  // Insert a single document
+  collection.insert({hello:'world_no_safe'});
+
+  // Wait for a second before finishing up, to ensure we have written the item to disk
+  setTimeout(function() {
+
+    // Fetch the document
+    collection.findOne({hello:'world_no_safe'}, function(err, item) {
+      assert.equal(null, err);
+      assert.equal('world_no_safe', item.hello);
+      db.close();
+    })
+  }, 100);
+});
 
 // mongoose setup
 var mongoose = require('mongoose');
-
-var os = require('os');
-var database_uri;
-console.log(os.hostname().indexOf("local") > -1);
-
-if(os.hostname().indexOf("local") > -1)
-  database_uri = "mongodb://remote/test";
-else
-  database_uri = "mongodb://root:stormbringer@127.0.0.1:27017";
-
+var database_uri = 'mongodb://localhost:27017';
 console.log(database_uri);
-
 mongoose.connect(database_uri, function(err) {
     if(err) {
         console.log('Connection error', err);
@@ -94,8 +115,5 @@ mongoose.connect(database_uri, function(err) {
     }
 });
 // user set up
-
 var port = process.env.PORT || 8000;
-
-
 module.exports = app;
