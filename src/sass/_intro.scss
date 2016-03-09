@@ -1,0 +1,106 @@
+.intro {
+    overflow: auto;
+    margin: 0 auto;
+    h1,
+    h2,
+    p {
+        @include main-font;
+        @include color-text;
+    }
+    .intro-text {
+        width: 100%;
+        box-sizing: border-box;
+        display: block;
+        @media (min-width: $mobile) {
+            float: right;
+            max-width: 69%;
+        }
+        p {
+            @media (min-width: $mobile) {
+                font-size: 1.2em;
+                line-height: 1.5em;
+            }
+            line-height: 1.3em;
+            padding: 0 1em 1em;
+        }
+    }
+    h1 {
+        margin-top: .75em;
+        @media (min-width: $tiny) {
+            font-size: 3em;
+        }
+        @media (min-width: $mobile) {
+            font-size: 4em;
+            margin-top: .5em;
+        }
+        @media (min-width: $large) {
+            margin-top: .0;
+        }
+        font-size: 2.5em;
+        text-align: center;
+    }
+    h2 {
+        @media (min-width: $tiny) {
+            font-size: 1.5em;
+        }
+        @media (min-width: $mobile) {
+            margin-bottom: 1em;
+        }
+        padding: 1em;
+        line-height: 1.1em;
+        font-size: 1em;
+        text-align: center;
+        color: $alt-color;
+        line-height: 1.5em;
+    }
+    img {
+        width: 50%;
+        margin: 0 auto 2em;
+        @include border-radius(50%);
+        max-width: 10em;
+        display: block;
+        @media (min-width: $mobile) {
+            max-width: 15em;
+            display: inline;
+            float: left;
+            margin: 0;
+        }
+        box-sizing: border-box;
+    }
+    a,
+    a:link,
+    a:active,
+    a:visited {
+        @include color-text;
+        @extend .hover;
+    }
+    span {
+        margin: 0 auto;
+        display: block;
+        @media (min-width: $mobile) {
+            display: inline-block;
+            margin: .5em auto;
+        }
+        &:after {
+            display: inline;
+            color: $primary-color;
+            margin: 0 .5em;
+            font-family: FontAwesome;
+        }
+        &:nth-child(1) {
+            &:after {
+                content: "\f13b";
+            }
+        }
+        &:nth-child(2) {
+            &:after {
+                content: "\f11b";
+            }
+        }
+        &:nth-child(3) {
+            &:after {
+                content: "\f135";
+            }
+        }
+    }
+}
