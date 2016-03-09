@@ -2,11 +2,12 @@
 angular.module('app', [
     'ngRoute',
     'app.home',
-    'app.blog'
+    'app.blog',
+    'app.edit'
 ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({
-            redirectTo: '/hey'
+            redirectTo: '/home'
         });
 }])
 
