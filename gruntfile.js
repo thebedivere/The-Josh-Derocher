@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function (grunt) {
-    require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
+    require('load-grunt-tasks')(grunt);
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.initConfig({
         sass: {
@@ -9,16 +9,60 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    './public/css/main.css': './sass/main.scss'
+                    './src/css/main.css': './src/sass/main.scss'
+                }
+            }
+        },
+        cssmin: {
+            options: {
+                shorthandCompacting: false,
+                roundingPrecision: -1
+            },
+            target: {
+                files: {
+                './public/css/main.min.css': './src/css/main.css'
+                }
+            }
+        },
+        concat: {
+            options: {
+                separator: ';',
+            },
+            dist: {
+                src: [
+
+                    'public/components/jquery/dist/jquery.js',
+                    'public/components/angular/angular.js',
+                    'public/components/showdown/dist/showdown.js',
+                    'public/components/angular-animate/angular-animate.js',
+                    'public/components/angular-route/angular-route.js',
+                    'public/*.js', 'public/home/*.js', 'public/blog/*.js', 'public/edit/*.js', 'src/js/*.js',
+                'public/components/handlebars/handlebars.js'],
+                dest: 'src/js/scripts.js'
+            }
+        },
+        uglify: {
+            options: {
+                screwIE8: true,
+                preserveComments: false
+            },
+            my_target: {
+                files: {
+                    'public/js/scripts.min.js': 'src/js/scripts.js'
+
                 }
             }
         },
         watch: {
             sass: {
                 files: ['**/*.scss'],
-                tasks: ['sass']
+                tasks: ['sass', 'cssmin']
+            },
+            scripts: {
+                files: ['**/*.js'],
+                tasks: ['concast', 'uglify']
             },
         }
     });
-    grunt.registerTask('default', ['sass', 'watch']);
+    grunt.registerTask('default', ['sass', 'cssmin', 'concat', 'uglify', 'watch']);
 };
