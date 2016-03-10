@@ -53,6 +53,7 @@ module.exports = function (grunt) {
                     'public/js/scripts.min.js': 'src/js/scripts.js', 
                     'public/js/home.min.js': 'public/home/home.js',
                     'public/js/blog.min.js': 'public/blog/blog.js', 
+                    'public/js/fiddles.min.js': 'public/fiddles/fiddles.js', 
                     'public/js/edit.min.js': 'public/edit/edit.js', 
                     'public/js/animation.min.js': 'src/js/animation.js' 
                 }
