@@ -3,7 +3,7 @@ angular.module('app', [
     'ngRoute',
     'app.home',
     'app.blog',
-    'app.edit'
+    'app.edit',
 ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({
