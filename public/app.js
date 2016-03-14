@@ -5,13 +5,15 @@ angular.module('app', [
     'app.blog',
     'app.edit',
     'app.fiddles',
+    'app.404'
 ])
     .config(['$routeProvider', function ($routeProvider) {
+        
         $routeProvider.otherwise({
-            redirectTo: '/home'
-        });
+                redirectTo: '/home',
+                templateUrl: 'home/home.html'
+            });
 }])
-
 
 .filter('capitalize', function () {
     return function (input, all) {
@@ -30,3 +32,4 @@ angular.module('app', [
         return $sce.trustAsHtml(html);
     }
 });
+
