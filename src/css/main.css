@@ -36,7 +36,7 @@
 .intro a:active,
 .intro a:visited, .card a, .work-card a,
 .card a:active, .work-card a:active,
-.card a:visited, .work-card a:visited, .card-container .more .toggle-less, .work-card div a, .work-card div .toggle-more, .download, header a,
+.card a:visited, .work-card a:visited, .work-card div a, .work-card div .toggle-more, .download, header a,
 header a:link,
 header a:active,
 header a:visited, header nav ul li a,
@@ -54,7 +54,7 @@ footer a:visited {
   -ms-transition: color 0.4s ease;
   -o-transition: color 0.4s ease;
   transition: color 0.4s ease; }
-  .hover:hover, .intro a:hover, .card a:hover, .work-card a:hover, .card-container .more .toggle-less:hover, .work-card div .toggle-more:hover, .download:hover, header a:hover,
+  .hover:hover, .intro a:hover, .card a:hover, .work-card a:hover, .work-card div .toggle-more:hover, .download:hover, header a:hover,
   header nav ul li a:hover:link,
   header nav ul li a:hover:active,
   header nav ul li a:hover:visited, header .social li a:hover, header .social li i:hover, .post-formatting a:hover, .blog-post a:hover, .preview a:hover, .error a:hover, footer a:hover {
@@ -156,12 +156,18 @@ footer a:visited {
   @media (min-width: 400px) {
     .work {
       display: flex;
-      flex-wrap: wrap; } }
+      flex-wrap: wrap;
+      justify-content: space-around; } }
 
 .resume {
   margin: 2em auto; }
 
 .card, .work-card {
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -ms-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
   -webkit-transition: box-shadow 0.4s ease;
   -moz-transition: box-shadow 0.4s ease;
   -ms-transition: box-shadow 0.4s ease;
@@ -200,62 +206,28 @@ footer a:visited {
     line-height: 1.5; }
   .card ul, .work-card ul {
     list-style: none; }
-  @media (min-width: 980px) {
-    .card, .work-card {
-      flex: auto; } }
-
-.card-container {
-  margin: 2em auto;
-  padding: .5em;
-  height: 300px;
-  width: 100%; }
-  @media (min-width: 400px) {
-    .card-container {
-      width: 300px; } }
-  .card-container .more {
-    width: 100%;
-    height: 300px;
-    position: absolute;
-    font-family: 'Roboto', sans-serif;
-    color: #009688;
-    font-size: .85rem;
-    line-height: 1.5;
-    padding: 1rem;
-    overflow: hidden;
-    padding: 0; }
-    @media (min-width: 400px) {
-      .card-container .more {
-        width: 300px; } }
-    .card-container .more .toggle-less {
-      position: absolute;
-      right: .5em;
-      bottom: 1em;
-      text-decoration: underline; }
-
-.toggle-more, .toggle-less {
-  cursor: pointer; }
 
 .work-card {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 300px;
+  height: 450px;
   -webkit-transition: 0.5s ease-in-out;
   -moz-transition: 0.5s ease-in-out;
   -ms-transition: 0.5s ease-in-out;
   -o-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
   z-index: 2;
-  margin: 0;
   background-color: #ecf0f1;
-  padding: 0;
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
   background-size: cover; }
   @media (min-width: 400px) {
     .work-card {
-      width: 300px; } }
+      width: 450px; } }
   .work-card div {
+    height: 200px;
+    z-index: 5;
     width: 100%;
     background-color: #009688;
     position: absolute;
@@ -264,13 +236,13 @@ footer a:visited {
     .work-card div a,
     .work-card div h5,
     .work-card div p {
-      padding: .5rem; }
+      padding: 1em; }
     .work-card div h5 {
-      font-size: 1rem;
+      font-size: 1.2em;
       font-weight: 700; }
     .work-card div a,
     .work-card div p {
-      font-size: .85rem; }
+      font-size: .85em; }
     .work-card div a {
       float: left; }
     .work-card div .toggle-more {

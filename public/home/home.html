@@ -67,35 +67,16 @@
         <h3>My work</h3>
         <div class="work">
             {{#each this}}
-            <div class="card-container">
+
                 <div class="work-card" id="card-{{@index}}" style="background-image: url({{image}})">
                     <div>
                         <h5>{{title}}</h5> {{#if languages}}
                         <p><strong>CREATED USING:</strong> {{#each languages}}{{uppercase this}}{{#unless @last}},&nbsp;{{/unless}}
                         {{/each}}</p>{{/if}} {{#if link}} {{#each link}}
                         <a href=" {{link_url}} ">{{link_title}}</a> {{/each}} {{/if}} 
-                        <!--{{#if body}}
-                        <a class="toggle-more" id="toggle-{{@index}}">more</a> {{/if}}
--->
                     </div>
                 </div>
-                {{#if body}}
-                <div class="more" id="more">
-                    {{#each body}}
-                    <p>{{this}}</p>
-                    {{/each}}
-                    <a class="toggle-less" id="toggle-less-{{@index}}">less</a>
-                </div>
-                {{/if}} {{#if list}}
-                <div class="more">
-                    <ul>
-                        {{#each list}}
-                        <li>{{this}}</li>
-                        {{/each}}
-                    </ul>
-                </div>
-                {{/if}}
-            </div>
+            
             {{/each}}
         </div>
     </script>
