@@ -4,7 +4,7 @@
         <div class="intro">
             <h1>Josh Derocher</h1>
             <h2>
- 
+
                 <span>Web&nbsp;Developer</span>
                 <span>Video&nbsp;Games&nbsp;Blogger</span>
                 <span>Fantasy &amp; Sci-Fi Writer</span>
@@ -41,7 +41,7 @@
         <h3>My resume</h3>
         <a class="download" href="./joshderocherresume.pdf" download>Download a PDF version</a>
         <div class="resume">
-        
+
             {{#each this}}
             <div class="card">
                 <h4>{{title}}</h4> {{#if date}}
@@ -53,8 +53,8 @@
                 {{/each}} {{/if}}
 
                 {{#if languages}}
-                <p><strong>SKILLS USED:</strong> 
-                {{#each languages}}{{uppercase this}}{{#unless @last}},&nbsp;{{/unless}}                         
+                <p><strong>SKILLS USED:</strong>
+                {{#each languages}}{{uppercase this}}{{#unless @last}},&nbsp;{{/unless}}
                 {{/each}}</p>
                 {{/if}}
 
@@ -73,10 +73,10 @@
                         <h5>{{title}}</h5> {{#if languages}}
                         <p><strong>CREATED USING:</strong> {{#each languages}}{{uppercase this}}{{#unless @last}},&nbsp;{{/unless}}
                         {{/each}}</p>{{/if}} {{#if link}} {{#each link}}
-                        <a href=" {{link_url}} ">{{link_title}}</a> {{/each}} {{/if}} 
+                        <a href=" {{link_url}} ">{{link_title}}</a> {{/each}} {{/if}}
                     </div>
                 </div>
-            
+
             {{/each}}
         </div>
     </script>

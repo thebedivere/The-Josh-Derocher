@@ -1,7 +1,8 @@
-
+<div class="container">
 <span id="home"></span>
     <div ng-repeat="blog in blog track by $index" ng-if="blog.title" class="blog-post">
         <h1>{{ blog.title | capitalize:true}} </h1>
         <h4>{{ blog.updated_at   | date : 'EEEE,  MMMM dd yyyy'}}</h4>
         <span ng-bind-html="blog.body | markdown"></span>
     </div>
+</div>

@@ -4,14 +4,13 @@ angular.module('app', [
     'app.home',
     'app.blog',
     'app.edit',
-    'app.fiddles',
-    'app.404'
+    'app.fiddles'
 ])
     .config(['$routeProvider', function ($routeProvider) {
         
         $routeProvider.otherwise({
                 redirectTo: '/home',
-                templateUrl: 'home/home.html'
+                templateUrl: 'modules/home.html'
             });
 }])
 

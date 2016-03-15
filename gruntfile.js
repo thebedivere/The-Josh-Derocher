@@ -51,12 +51,8 @@ module.exports = function (grunt) {
                     'public/js/work.min.js': 'src/js/work.js', 
                     'public/js/resume.min.js': 'src/js/resume.js', 
                     'public/js/scripts.min.js': 'src/js/scripts.js', 
-                    'public/js/home.min.js': 'public/home/home.js',
-                    'public/js/blog.min.js': 'public/blog/blog.js', 
-                    'public/js/404.min.js': 'public/404/404.js', 
-                    'public/js/fiddles.min.js': 'public/fiddles/fiddles.js', 
-                    'public/js/edit.min.js': 'public/edit/edit.js', 
-                    'public/js/animation.min.js': 'src/js/animation.js' 
+                    'public/js/animation.min.js': 'src/js/animation.js',
+                    'public/modules/modules.min.js': 'public/modules/**.js'
                 }
             }
         },
@@ -66,7 +62,7 @@ module.exports = function (grunt) {
                 tasks: ['sass', 'cssmin']
             },
             scripts: {
-                files: ['public/**/*.js', '!public/js/**.min.js'],
+                files: ['public/**/*.js', '!public/**/**.min.js'],
                 tasks: ['concat', 'uglify']
             },
         }
