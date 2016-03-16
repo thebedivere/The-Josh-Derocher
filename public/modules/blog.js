@@ -2,8 +2,9 @@
 
 angular.module('app.blog', ['ngRoute'])
 
-.factory('Blog', ['$http', function ($http) {
+.factory('Blog', ['$http', '$scope', function ($http, $scope) {
     return $http.get('/post');
+    $scope.blogSuccess = true;
     }])
 
 .config(['$routeProvider', function ($routeProvider) {
@@ -15,8 +16,10 @@ angular.module('app.blog', ['ngRoute'])
 
 .controller('BlogCtrl', ['$scope', 'Blog', function ($scope, Blog) {
     Blog.success(function (data) {
+
         $scope.blog = data;
     }).error(function (data, status) {
+        $scope.blogSuccess = false;
         console.log(data, status);
         $scope.blog = [];
     });

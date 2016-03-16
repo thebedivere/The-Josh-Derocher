@@ -7,7 +7,6 @@ angular.module('app', [
     'app.fiddles'
 ])
     .config(['$routeProvider', function ($routeProvider) {
-        
         $routeProvider.otherwise({
                 redirectTo: '/home',
                 templateUrl: 'modules/home.html'
@@ -23,12 +22,15 @@ angular.module('app', [
     }
 })
 
-
 .filter('markdown', function ($sce) {
     var converter = new showdown.Converter();
     return function (value) {
         var html = converter.makeHtml(value || '');
         return $sce.trustAsHtml(html);
     }
-});
+})
+
+.controller('AppCtrl', ['$scope', function ($scope) {
+    $scope.testTest = true;
+}]);
 
