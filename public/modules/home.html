@@ -4,7 +4,6 @@
         <div class="intro">
             <h1>Josh Derocher</h1>
             <h2>
-
                 <span>Web&nbsp;Developer</span>
                 <span>Video&nbsp;Games&nbsp;Blogger</span>
                 <span>Fantasy &amp; Sci-Fi Writer</span>
@@ -29,7 +28,6 @@
         <div class="resume-placeholder"></div>
         <!-- / -->
     </div>
-
     <script>
     // upcase helper
     Handlebars.registerHelper('uppercase', function(string) {
@@ -67,13 +65,21 @@
         <h3>My work</h3>
         <div class="work">
             {{#each this}}
-
-                <div class="work-card" id="card-{{@index}}" style="background-image: url({{image}})">
+                <div class="work-card" style="background-image: url({{image}})" onclick="$(this).toggleClass('open');$('#p-{{@index}}').toggleClass('hidden');" id="card-{{@index}}">
                     <div>
-                        <h5>{{title}}</h5> {{#if languages}}
+                        <a title="Toggle more" class="toggle"></a>
+                        <h5>{{title}}</h5>{{#if languages}}
                         <p><strong>CREATED USING:</strong> {{#each languages}}{{uppercase this}}{{#unless @last}},&nbsp;{{/unless}}
                         {{/each}}</p>{{/if}} {{#if link}} {{#each link}}
                         <a href=" {{link_url}} ">{{link_title}}</a> {{/each}} {{/if}}
+
+
+                        <span id="p-{{@index}}" class="hidden">
+                            {{#each body}}
+                            <p>{{this}}</p>
+                            {{/each}}
+                        </span>
+
                     </div>
                 </div>
 
