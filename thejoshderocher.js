@@ -90,11 +90,24 @@ var db = new Db('josh', new Server('localhost', 27017));
 // Fetch a collection to insert document into
 db.open(function(err, db) {
   var collection = db.collection("blog_posts");
+  // Insert a single document
+  collection.insert({hello:'world_no_safe'});
+
+  // Wait for a second before finishing up, to ensure we have written the item to disk
+  setTimeout(function() {
+
+    // Fetch the document
+    collection.findOne({hello:'world_no_safe'}, function(err, item) {
+      assert.equal(null, err);
+      assert.equal('world_no_safe', item.hello);
+      db.close();
+    })
+  }, 100);
 });
 
 // mongoose setup
 var mongoose = require('mongoose');
-var database_uri = 'mongodb://localhost:27017/josh';
+var database_uri = 'mongodb://localhost:27017';
 console.log(database_uri);
 mongoose.connect(database_uri, function(err) {
     if(err) {

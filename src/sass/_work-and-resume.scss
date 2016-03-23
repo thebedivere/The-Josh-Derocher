@@ -1,7 +1,6 @@
 .work {
     margin: 2em auto;
     @media (min-width: $tiny) {
-         @include transition(1s cubic-bezier(0.4, 0, 0.2, 1));
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
@@ -56,26 +55,16 @@
     }
 }
 
+
+
 .work-card {
-    .toggle {
-        margin: 0;
-        padding: .5em 1em 2em 2em;
-        float: right;
-        @extend .hover;
-        &:after{
-            font-size: 1.5em;
-            font-family: 'FontAwesome';
-            content: '\f142';
-        }
-    }
-    opacity: 1;
-    @include transition(.7s ease-in-out);
     position: relative;
     width: 100%;
     @media (min-width: $tiny) {
         width: 450px;
     }
     height: 450px;
+    @include transition(0.5s ease-in-out);
     z-index: 2;
     @extend .card;
     background-color: $clouds;
@@ -84,11 +73,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     div {
-        span {
-            display: block;
-            float: left;
-        }
-        @include transition(.7s ease-in-out);
         height: 200px;
         z-index: 5;
         width: 100%;
@@ -100,7 +84,7 @@
         h5,
         p,
         {
-            padding: 1rem;
+            padding: 1em;
         }
         h5 {
             font-size: 1.2em;
@@ -109,27 +93,16 @@
         a,
         p {
             font-size: .85em;
-            @include transition(.7s linear);
         }
         a {
             float: left;
             @extend .hover;
         }
-    }
-}
-
-.open {
-    .toggle {
-        @extend .hover;
-        &:after{
-            font-size: 1.5em;
-            font-family: 'FontAwesome';
-            content: '\f00d';
+        .toggle-more {
+            @extend .hover;
+            float: right;
+            text-decoration: underline;
         }
-    }
-    div {
-        box-sizing: border-box;
-        height: 100%;
     }
 }
 
