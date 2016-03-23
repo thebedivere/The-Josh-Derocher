@@ -4,14 +4,12 @@ angular.module('app', [
     'app.home',
     'app.blog',
     'app.edit',
-    'app.fiddles',
-    'app.404'
+    'app.fiddles'
 ])
     .config(['$routeProvider', function ($routeProvider) {
-        
         $routeProvider.otherwise({
                 redirectTo: '/home',
-                templateUrl: 'home/home.html'
+                templateUrl: 'modules/home.html'
             });
 }])
 
@@ -24,12 +22,15 @@ angular.module('app', [
     }
 })
 
-
 .filter('markdown', function ($sce) {
     var converter = new showdown.Converter();
     return function (value) {
         var html = converter.makeHtml(value || '');
         return $sce.trustAsHtml(html);
     }
-});
+})
+
+.controller('AppCtrl', ['$scope', function ($scope) {
+    $scope.testTest = true;
+}]);
 
