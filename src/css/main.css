@@ -4,6 +4,9 @@
   .large-hide {
     display: none !important; } }
 
+.hidden {
+  display: none; }
+
 .move-up {
   -webkit-transform: translate(0, -325px);
   -moz-transform: translate(0, -325px);
@@ -33,7 +36,7 @@
 .intro a:active,
 .intro a:visited, .card a, .work-card a,
 .card a:active, .work-card a:active,
-.card a:visited, .work-card a:visited, .work-card .toggle, .work-card div a, .open .toggle, .download, header a,
+.card a:visited, .work-card a:visited, .work-card div a, .work-card div .toggle-more, .download, header a,
 header a:link,
 header a:active,
 header a:visited, header nav ul li a,
@@ -46,32 +49,16 @@ header .social li a:visited, header .social li i, .post-formatting a, .blog-post
 .post-formatting a:visited, .blog-post a:visited, .preview a:visited, .error a:visited, footer a,
 footer a:active,
 footer a:visited {
-  cursor: pointer;
   -webkit-transition: color 0.4s ease;
   -moz-transition: color 0.4s ease;
   -ms-transition: color 0.4s ease;
   -o-transition: color 0.4s ease;
   transition: color 0.4s ease; }
-  .hover:hover, .intro a:hover, .card a:hover, .work-card a:hover, .work-card .toggle:hover, .open .toggle:hover, .download:hover, header a:hover,
+  .hover:hover, .intro a:hover, .card a:hover, .work-card a:hover, .work-card div .toggle-more:hover, .download:hover, header a:hover,
   header nav ul li a:hover:link,
   header nav ul li a:hover:active,
   header nav ul li a:hover:visited, header .social li a:hover, header .social li i:hover, .post-formatting a:hover, .blog-post a:hover, .preview a:hover, .error a:hover, footer a:hover {
     color: #00635a !important; }
-
-.hidden {
-  opacity: 0;
-  -webkit-transition: 0.7s linear;
-  -moz-transition: 0.7s linear;
-  -ms-transition: 0.7s linear;
-  -o-transition: 0.7s linear;
-  transition: 0.7s linear; }
-  .hidden p {
-    opacity: 0;
-    -webkit-transition: 0.7s linear;
-    -moz-transition: 0.7s linear;
-    -ms-transition: 0.7s linear;
-    -o-transition: 0.7s linear;
-    transition: 0.7s linear; }
 
 .intro {
   overflow: auto;
@@ -168,11 +155,6 @@ footer a:visited {
   margin: 2em auto; }
   @media (min-width: 400px) {
     .work {
-      -webkit-transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
-      -moz-transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
-      -ms-transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
-      -o-transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
-      transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around; } }
@@ -226,38 +208,24 @@ footer a:visited {
     list-style: none; }
 
 .work-card {
-  opacity: 1;
-  -webkit-transition: 0.7s ease-in-out;
-  -moz-transition: 0.7s ease-in-out;
-  -ms-transition: 0.7s ease-in-out;
-  -o-transition: 0.7s ease-in-out;
-  transition: 0.7s ease-in-out;
   position: relative;
   width: 100%;
   height: 450px;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -ms-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
   z-index: 2;
   background-color: #ecf0f1;
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
   background-size: cover; }
-  .work-card .toggle {
-    margin: 0;
-    padding: .5em 1em 2em 2em;
-    float: right; }
-    .work-card .toggle:after {
-      font-size: 1.5em;
-      font-family: 'FontAwesome';
-      content: '\f142'; }
   @media (min-width: 400px) {
     .work-card {
       width: 450px; } }
   .work-card div {
-    -webkit-transition: 0.7s ease-in-out;
-    -moz-transition: 0.7s ease-in-out;
-    -ms-transition: 0.7s ease-in-out;
-    -o-transition: 0.7s ease-in-out;
-    transition: 0.7s ease-in-out;
     height: 200px;
     z-index: 5;
     width: 100%;
@@ -265,35 +233,21 @@ footer a:visited {
     position: absolute;
     bottom: 0;
     padding-bottom: .5em; }
-    .work-card div span {
-      display: block;
-      float: left; }
     .work-card div a,
     .work-card div h5,
     .work-card div p {
-      padding: 1rem; }
+      padding: 1em; }
     .work-card div h5 {
       font-size: 1.2em;
       font-weight: 700; }
     .work-card div a,
     .work-card div p {
-      font-size: .85em;
-      -webkit-transition: 0.7s linear;
-      -moz-transition: 0.7s linear;
-      -ms-transition: 0.7s linear;
-      -o-transition: 0.7s linear;
-      transition: 0.7s linear; }
+      font-size: .85em; }
     .work-card div a {
       float: left; }
-
-.open .toggle:after {
-  font-size: 1.5em;
-  font-family: 'FontAwesome';
-  content: '\f00d'; }
-
-.open div {
-  box-sizing: border-box;
-  height: 100%; }
+    .work-card div .toggle-more {
+      float: right;
+      text-decoration: underline; }
 
 .download {
   color: #009688;
