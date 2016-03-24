@@ -10,7 +10,7 @@
 @import 'blog';
 @import 'error';
 @import 'toast';
-
+@import 'game';
 * {
     margin: 0;
     padding: 0;
@@ -76,12 +76,22 @@ footer {
         @include light-text;
         @extend .hover;
     }
-
     ul {
         list-style: none;
         li {
             margin: 1em auto;
         }
     }
+}
 
+ul {
+    list-style: none;
+}
+
+.alert {
+    color: $red!important;
+}
+
+.warning {
+    color: $orange!important;
 }

@@ -3,9 +3,23 @@
     @include light-text;
     background-color: $dark-grey;
     padding: 2em;
-    margin: 1e;
+    margin: 1em;
     @include shadow-2;
-    position: absolute;
+    bottom: 0;
+    z-index: 200;
+    i {
+        margin-left: 1em;
+        &:hover {
+        cursor: pointer;
+    }
+    }
+
+}
+
+.toast-area {
+    background: transparent;
+    position: fixed;
     right: 1em;
     bottom: 1em;
+    z-index: 200;
 }

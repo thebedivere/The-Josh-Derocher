@@ -1,0 +1,35 @@
+<div class="container blog-post game">
+    <div class="game-status">
+        <p>Keep everyone alive!</p>
+        <p><i class="fa fa-cutlery"></i>Food: {{ inventory.food | number: 0 }}</p>
+        <p><i class="fa fa-beer"></i>Water: {{ inventory.water | number: 0 }}</p>
+    </div>
+    <div ng-repeat="character in characters" class="game-card">
+        <h5 ng-class="{ 'alert' : !character.alive }">{{ character.name }}<i ng-show="character.busy" class="fa fa-cog fa-spin"></i></h5>
+        <span ng-if="character.alive">
+        <ul>
+            <li>{{ character.status }} <i class="{{ character.icon }}"></i></li>
+            <li ng-class="{ 'warning' : character.health < 50 }">Health: {{ character.health | number: 0}} </li>
+            <li ng-class="{ 'warning' : character.hunger < 50 }">Hunger: {{ character.hunger | number: 0}} </li>
+            <li ng-class="{ 'warning' : character.thirst < 50 }">Thirst: {{ character.thirst | number: 0}} </li>
+            <li ng-class="{ 'warning' : character.mood < 50}">Mood: {{ character.mood | number: 0}} </li>
+        </ul>
+            <div class="button-box">
+        <button ng-click="eat( character.name );"  ng-disabled="character.busy">Eat</button>
+        <button ng-click="drink( character.name );" ng-disabled="character.busy">Drink</button>
+            <br>
+        <button ng-click="search( character.name, 'food', 10000 );"  ng-disabled="character.busy">Search for food</button>
+        <button ng-click="search( character.name, 'water', 10000 );"  ng-disabled="character.busy">Search for Water</button>
+                </div>
+        </span>
+        <p ng-if="!character.alive">
+            {{character.name}} is dead.
+        </p>
+    </div>
+</div>
+<div class="toast-area">
+    <div class="toast" ng-repeat="message in messages track by $index" onclick="$(this).remove()">
+        {{ message }}
+        <i class="fa fa-times"></i>
+    </div>
+</div>

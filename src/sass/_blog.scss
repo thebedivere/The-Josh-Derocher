@@ -45,6 +45,9 @@ button {
         border: none !important;
         outline: none !important;
     }
+    &:disabled {
+        background-color: $asbestos;
+    }
 }
 
 .preview {
