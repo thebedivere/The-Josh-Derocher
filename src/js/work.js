@@ -52,7 +52,9 @@ $(function () {
             image: "../img/dealmelocal.png",
             body: ["While this app never got off the ground, the underlaying technology still works. I used FourSquare's API to fetch a list of locations from a local shopping organization and display them on a map. The app would also show a list of local deals going on, as well as details and photos of each business."]
         }
+
           ];
+
     // Pass our data to the template
     var theCompiledHtml = theTemplate(context);
     // Add the compiled html to the page
