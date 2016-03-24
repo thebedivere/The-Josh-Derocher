@@ -5,17 +5,12 @@ angular.module('app', [
     'app.blog',
     'app.edit',
     'app.fiddles',
-<<<<<<< HEAD
     'app.game'
-=======
-    'app.404'
->>>>>>> 6ee4d2bc9aab6b1bc95e4794ebd5a10a2172f21e
 ])
     .config(['$routeProvider', function ($routeProvider) {
-        
         $routeProvider.otherwise({
                 redirectTo: '/home',
-                templateUrl: 'home/home.html'
+                templateUrl: 'modules/home.html'
             });
 }])
 
@@ -28,12 +23,15 @@ angular.module('app', [
     }
 })
 
-
-.filter('markdown', function ($sce) {
+.filter('markdown', ['$sce', function ($sce) {
     var converter = new showdown.Converter();
     return function (value) {
         var html = converter.makeHtml(value || '');
         return $sce.trustAsHtml(html);
     }
-});
+}])
+
+.controller('AppCtrl', ['$scope', function ($scope) {
+    $scope.testTest = true;
+}]);
 
