@@ -17,7 +17,8 @@ angular.module('app.blog', ['ngRoute'])
     });
 }])
 
-.controller('BlogCtrl', ['$scope', 'Blog', function ($scope, Blog) {
+.controller('BlogCtrl', ['$scope', 'Blog', '$log', function ($scope, Blog, $log) {
+    $scope.working = true;
     Blog.success(function (data) {
         $scope.blogSuccess = true;
         $scope.blog = data;
@@ -29,6 +30,7 @@ angular.module('app.blog', ['ngRoute'])
 }])
 
 .controller('BlogPostCtrl', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+    $scope.working = true;
         $http.get('/post/' + $routeParams.id)
         .success(function (data) {
         $scope.blogSuccess = true;

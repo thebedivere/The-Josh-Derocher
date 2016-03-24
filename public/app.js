@@ -4,7 +4,8 @@ angular.module('app', [
     'app.home',
     'app.blog',
     'app.edit',
-    'app.fiddles'
+    'app.fiddles',
+    'app.game'
 ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({

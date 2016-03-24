@@ -1,0 +1,99 @@
+.game {
+    margin: 2em auto;
+    @media (min-width: $tiny) {
+        @include transition(1s cubic-bezier(0.4, 0, 0.2, 1));
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}
+
+.game-card {
+    @include dark-text;
+    opacity: 1;
+    @include transition(.7s ease-in-out);
+    position: relative;
+    width: 100%;
+    @media (min-width: $tiny) {
+        width: 450px;
+    }
+    min-height: 450px;
+    z-index: 2;
+    @extend .card;
+    background-color: $clouds;
+    padding: .5em;
+    a,
+    h5,
+    p,
+    {
+        padding: 1rem;
+    }
+    h5 {
+        font-size: 1.2em;
+        font-weight: 700;
+    }
+    a,
+    p {
+        font-size: 1.1em;
+    }
+    button {
+        width: 100%;
+        margin: 1em;
+        display: block;
+    }
+    .button-box {
+        float: right;
+        position: absolute;
+        margin: 2em;
+        top: 0;
+        right: 0;
+        border: none;
+
+    }
+     i {
+        margin-left: 1em;
+         font-family: 'FontAwesome';
+    }
+    ul {
+        width: 50%;
+        margin: 1em;
+        box-sizing: border-box;
+    }
+}
+
+
+.game-status {
+    @include light-text;
+    opacity: 1;
+    @include transition(.7s ease-in-out);
+    position: relative;
+    width: 100%;
+    min-height: 100px;
+    z-index: 2;
+    @extend .card;
+    background-color: $primary-color;
+    padding: .5em;
+    a,
+    h5,
+    p,
+    {
+        padding: 1rem;
+    }
+    h5 {
+        font-size: 1.2em;
+        font-weight: 700;
+    }
+    a,
+    p {
+        font-size: 1.1em;
+    }
+    button {
+        min-width: 5em;
+        margin: 1em;
+        display: inline-block;
+    }
+         i {
+        margin-right: 1em;
+         font-family: 'FontAwesome';
+    }
+}

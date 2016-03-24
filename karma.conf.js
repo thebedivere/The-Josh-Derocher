@@ -17,7 +17,7 @@ module.exports = function (config) {
         files: [
             'public/components/angular/angular.js',
             'public/components/angular-mocks/angular-mocks.js',
-            'public/components/showdown/dist/showdown.min.js',
+            'public/components/showdown/dist/showdown.js',
             'public/components/angular-animate/angular-animate.js',
             'public/components/angular-route/angular-route.js',
             'public/components/handlebars/handlebars.js',
