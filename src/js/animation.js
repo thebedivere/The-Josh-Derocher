@@ -1,20 +1,13 @@
 $(document).ready(function () {
-    $(function () {
-        $('.toggle-more').click(function () {
-            var toggleId = $(this).attr('id');
-            var toggleIndex = toggleId.replace('toggle-', '');
-            $("#card-" + toggleIndex).toggleClass('move-up');
-        });
+    console.log("Animation ready");
+    $(this).click(function () {
+        console.log(this);
     });
-    $(function () {
-        $('.toggle-less').click(function () {
-            var toggleId = $(this).attr('id');
-            var toggleIndex = toggleId.replace('toggle-less-', '');
-            $("#card-" + toggleIndex).removeClass('move-up');
-        });
+    $('div').click(function () {
+        var toggleId = $(this).attr('id');
+        var toggleIndex = toggleId.replace('toggle-', '');
+        console.log('clicked ');
+        $("#card-" + toggleIndex).toggleClass('open');
     });
-    $(document).scroll(function () {
-        $('.move-up').delay(1000).removeClass('move-up');
-    });
-
+    console.log("Animation ready 2");
 });
