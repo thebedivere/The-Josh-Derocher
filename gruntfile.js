@@ -9,7 +9,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    './src/css/main.css': './src/sass/main.scss'
+                    './temp/css/main.css': './development/sass/main.scss'
                 }
             }
         },
@@ -20,71 +20,101 @@ module.exports = function (grunt) {
             },
             target: {
                 files: {
-                './public/css/main.min.css': './src/css/main.css'
+                    './public/css/main.min.css': './temp/css/main.css'
                 }
             }
         },
         concat: {
+            // Concat all of the JavaScript dependencies
             options: {
                 separator: ';',
             },
             dist: {
                 src: [
 
-                    'public/components/jquery/dist/jquery.js',
-                    'public/components/jquery-ui/jquery-ui.js',
-                    'public/components/angular/angular.annotated.js',
-                    'public/components/showdown/dist/showdown.js',
-                    'public/components/angular-animate/angular-animate.js',
-                    'public/components/angular-route/angular-route.annotated.js',
-                    'public/components/handlebars/handlebars.js'
-                    /*
-                    'public/*.js', 'public/home/*.js', 'public/blog/*.js', 'public/edit/*.js', 'src/js/*.js',
-                        */
-                
+                    'development/bower_components/jquery/dist/jquery.js',
+                    'development/bower_components/jquery-ui/jquery-ui.js',
+                    'development/bower_components/angular/angular.annotated.js',
+                    'development/bower_components/showdown/dist/showdown.js',
+                    'development/bower_components/angular-animate/angular-animate.js',
+                    'development/bower_components/angular-route/angular-route.annotated.js',
+                    'development/bower_components/handlebars/handlebars.js'
                 ],
-                dest: 'src/js/scripts.js'
+                dest: 'temp/js/scripts.js'
             }
-        },
-        ngAnnotate: {
-            options: {
-                singleQuotes: true,
-            },
-            app: {
-                files: [{
-                    expand: true,
-                    src: ['public/app.js', 'public/modules/**.js', 'public/components/angular-route/angular-route.js',  'public/components/angular/angular.js',],
-                    ext: '.annotated.js',
-                    extDot: 'last',
-                }],
-            },
         },
         uglify: {
             options: {
                 mangle: false
             },
             my_target: {
-                files: {
-                    'public/js/work.min.js': 'src/js/work.js', 
-                    'public/js/resume.min.js': 'src/js/resume.js', 
-                    'public/js/scripts.min.js': 'src/js/scripts.js', 
-                    'public/js/animation.min.js': 'src/js/animation.js',
-                    'public/modules/modules.min.js': 'public/modules/**.annotated.js'
-                }
+                files: [{
+                    expand: true,
+                    cwd: 'development/js/',
+                    src: '**/*.js',
+                    dest: 'public/js/'
+                }, {
+                    'public/components/modules.min.js': 'development/components/**/*.js',
+                    'public/app.js': 'development/app.js'
+                }],
+
             }
         },
-        clean: ['public/**/*.min.js','public/**/*.annotated.js'],
+        clean: {
+            build: ['public/**/**', 'temp/**/**'],
+            temp: ['temp/**/**']
+        },
         watch: {
             sass: {
                 files: ['**/*.scss'],
-                tasks: ['sass', 'cssmin']
+                tasks: ['sass', 'cssmin', 'clean:temp']
             },
             scripts: {
-                files: ['public/**/*.js', 'public/modules/*.js', '!**/**.min.js', 'src/js/*.js'],
-                tasks: ['clean', 'ngAnnotate' ,'concat', 'uglify']
+                files: ['development/**/*.js'],
+                tasks: ['uglify', 'clean:temp']
             },
+        },
+        htmlmin: {
+            build: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: [{
+                        expand: true,
+                        cwd: 'development/components/',
+                        src: '**/*.html',
+                        dest: 'public/components/'
+                },
+                    {
+                        expand: true,
+                        cwd: 'development/',
+                        src: '**/*.ejs',
+                        dest: 'public/'
+                }]
+            }
+        },
+        copy: {
+            build: {
+                files: [{
+                    'public/favicon.ico': 'development/favicon.ico',
+                    'public/joshderocherresume.pdf': 'development/joshderocherresume.pdf'
+                }]
+            }
+        },
+        imagemin: {
+            build: {
+                files: [{
+                        expand: true,
+                        cwd: 'development/',
+                        src: ['*.{png,jpg,gif}', 'img/*.{png,jpg,gif}'],
+                        dest: 'public/'
+           }
+           ]
+            }
         }
     });
-    grunt.registerTask('default', ['clean', 'ngAnnotate', 'concat', 'sass', 'cssmin', 'concat', 'uglify', 'watch']);
-    grunt.registerTask('js', ['clean','ngAnnotate','concat', 'uglify']);
+    grunt.registerTask('default', ['clean:temp', 'sass', 'cssmin', 'uglify', 'watch']);
+    grunt.registerTask('js', ['concat', 'uglify', 'clean:temp']);
+    grunt.registerTask('build', ['clean:build', 'sass', 'cssmin', 'concat', 'uglify', 'htmlmin:build', 'imagemin:build', 'copy', 'clean:temp']);
 };
