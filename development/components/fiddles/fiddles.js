@@ -9,6 +9,15 @@ angular.module('app.fiddles', ['ngRoute'])
     });
 }])
 
-.controller('fiddlesCtrl', ['$scope', function ($scope) {
-
+.controller('fiddlesCtrl', ['$scope', '$http', function ($scope, $http) {
+    $scope.movieSearch = function() {
+    $http.get('http://www.omdbapi.com/?s=' + $scope.searchTitle)
+    .success(function (data) {
+        console.log(data);
+        $scope.movies = data.Search;
+    })
+    .error(function (data, status) {
+        console.log(data, status);
+    });
+    };
 }]);

@@ -1,0 +1,71 @@
+<div id="output">
+
+
+
+
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript">
+    function mapInit() {
+        travelTime();
+        directions();
+    };
+
+    function travelTime() {
+        console.log("loading...");
+        var origin = '1025 Hancock St, Quincy MA';
+        var destination = '610 Lincoln St, Waltham MA';
+        var service = new google.maps.DistanceMatrixService;
+        service.getDistanceMatrix({
+            origins: [origin],
+            destinations: [destination],
+            travelMode: google.maps.TravelMode.DRIVING,
+            unitSystem: google.maps.UnitSystem.IMPERIAL,
+            drivingOptions: {
+                departureTime: new Date(2016,3,30,18),  // for the time N milliseconds from now.
+                trafficModel: "optimistic"
+            },
+            avoidHighways: false,
+            avoidTolls: false
+        }, function (response, status) {
+            if (status !== google.maps.DistanceMatrixStatus.OK) {
+                alert('Error was: ' + status);
+            } else {
+                console.log(response);
+                var originList = response.originAddresses;
+                var destinationList = response.destinationAddresses;
+                var outputDiv = document.getElementById('output');
+                outputDiv.innerHTML = '';
+                for (var i = 0; i < originList.length; i++) {
+                    var results = response.rows[i].elements;
+                    for (var j = 0; j < results.length; j++) {
+                        outputDiv.innerHTML += originList[i] + ' to ' + destinationList[j] +
+                            ': ' + results[j].distance.text + ' in ' +
+                            results[j].duration.text + '<br>';
+                    };
+                };
+            };
+        });
+    };
+
+    function directions() {
+
+        // Set destination, origin and travel mode.
+        var request = {
+            destination: '610 Lincoln St, Waltham MA',
+            origin: '1025 Hancock St, Quincy MA',
+            travelMode: google.maps.TravelMode.DRIVING,
+        };
+
+        // Pass the directions request to the directions service.
+        var directionsService = new google.maps.DirectionsService();
+        directionsService.route(request, function (response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                // Display the route on the map.
+                console.log(response);
+            }
+        });
+    }
+</script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB4ELAWH1uV8q5WwxqXXfREzJEg3R2kzMw&callback=mapInit" async defer></script>

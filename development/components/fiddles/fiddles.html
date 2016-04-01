@@ -1,6 +1,48 @@
-<div class="container blog-post">
-    <h1>Zip Code Form</h1>
-    <p>This simple form just returns an address for an entered Zip Code. jQuery watches for changes on the form, then a GET request is sent to Google's Maps API with the entered Zip Code. The returned address is then shown to the user.</p>
-<iframe width="100%" height="300" src="//jsfiddle.net/thebedivere/c9uaLd7w/9/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<div class="container">
+    <div class="blog-post">
+        <h1>Zip Code Form</h1>
+        <p>This simple form just returns an address for an entered Zip Code. jQuery watches for changes on the form, then a GET request is sent to Google's Maps API with the entered Zip Code. The returned address is then shown to the user.</p>
+        <iframe width="100%" height="300" src="//jsfiddle.net/thebedivere/c9uaLd7w/9/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+    </div>
+    <div class="blog-post">
+        <h1>Media Search</h1>
+        <p>Search for movies, TV shows, and video games by title. Created using the <a href="http://www.omdbapi.com/" title="The Open Movie Database">OMDb API</a>. Clicking on the title or image will take you the items IMDb page.</p>
+        <div class="blog-post">
+            <pre>
+<bold>Javascript</bold>
+<code>
+$scope.movieSearch = function() {
+    $http.get('http://www.omdbapi.com/?s=' + $scope.searchTitle)
+    .success(function (data) {
+        console.log(data);
+        $scope.movies = data.Search;
+    })
+    .error(function (data, status) {
+        console.log(data, status);
+    });
+};
+</code>
+<bold>HTML</bold>
+<code>
+&lt;div ng-repeat=&quot;movie in movies&quot; class=&quot;card&quot;&gt;
+            &lt;div class=&quot;blog-post&quot;&gt;
+                &lt;h4 class=&quot;center-text&quot;&gt;&lt;a href=&quot;http://www.imdb.com/title/{{movie.imdbID}}&quot;&gt;{{movie.Title}}&lt;/a&gt;&lt;/h4&gt;
+                &lt;a href=&quot;http://www.imdb.com/title/{{movie.imdbID}}&quot;&gt;&lt;img src=&quot;{{movie.Poster}}&quot;&gt;&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+</code>
+        </pre>
+        </div>
+        <input type="text" placeholder="Search by title" ng-model="searchTitle" ng-change="movieSearch()">
+        <!-- next feature: get more details about the movie by doing a title query, i.e. http://www.omdbapi.com/?t=Jaws&y=&plot=full&r=json -->
+    </div>
+    <div class="cards">
+        <div ng-repeat="movie in movies" class="card">
+            <div class="blog-post">
+                <h4 class="center-text"><a href="http://www.imdb.com/title/{{movie.imdbID}}">{{movie.Title}}</a></h4>
+                <a href="http://www.imdb.com/title/{{movie.imdbID}}"><img src="{{movie.Poster}}"></a>
+            </div>
+        </div>
+    </div>
 
 </div>
