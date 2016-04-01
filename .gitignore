@@ -1,10 +1,7 @@
 /node_modules/*
-/bower_components/*
+development/bower_components/*
 /testApp/node_modules/*
-/public/components/*
-/public/modules/modules.min.js
-/public/modules/fiddles.annotated.js
-/public/modules/home.annotated.js
-/public/modules/edit.annotated.js
-/public/modules/blog.annotated.js
-/public/app.annotated.js
+/public/*
+/public/**/*
+/public/index.ejs
+/public/error.ejs
