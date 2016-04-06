@@ -15,45 +15,85 @@ header {
     top: 0;
     width: 100%;
     overflow: auto;
+    .menu-toggle {
+        @include light-text;
+        margin: .5rem 0 .5rem 1rem;
+        position: relative;
+        float: left;
+        display: inline-block;
+        @media (min-width: $large) {
+            display: none!important;
+        }
+    }
     nav {
+        left: 0;
+        @include transition(left .5s ease-in-out);
         @media (min-width: $tiny) {
             font-size: 1em;
         }
-        font-size: .8em;
-        float: left;
-        display: inline-block;
-        margin: 1em 0 1em 1em;
-        position: relative;
-        ul {
-            list-style: none;
+        @media (max-width: $large) {
+            a,
+            a:link,
+            a:active,
+            a:visited,
+            ul,
             li {
-                a,
-                a:link,
-                a:active,
-                a:visited {
-                    @extend .hover;
-                    @include light-text;
-                    text-decoration: none;
+                color: $dark-grey!important;
+            }
+            ul {
+                padding: 2em 0;
+            }
+            li {
+                padding: 1em 4em;
+                &:nth-child(odd) {
+                    background-color: darken(#eee, 10);
                 }
-                display: inline;
-                &:after {
-                    margin: 0 .5em;
-                    content: " |";
-                }
-                &:last-child {
+            }
+            font-size: 1.2em;
+            background-color: #eee;
+            display: block;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            padding: 0;
+            @include shadow-2;
+        }
+        @media (min-width: $large) {
+            font-size: 1em;
+            float: left;
+            display: inline-block;
+            margin: 1em 0 1em 1em;
+            position: relative;
+            ul {
+                list-style: none;
+                li {
+                    a,
+                    a:link,
+                    a:active,
+                    a:visited {
+                        @extend .hover;
+                        @include light-text;
+                        text-decoration: none;
+                    }
+                    display: inline;
                     &:after {
-                        content: none;
+                        margin: 0 .5em;
+                        content: " |";
+                    }
+                    &:last-child {
+                        &:after {
+                            content: none;
+                        }
                     }
                 }
             }
         }
     }
     .social {
-        @media (min-width: $tiny) {
-            font-size: 1em;
-        }
-        font-size: .8em;
-        margin: .5em 1em .5em 0;
+        font-size: 1em;
+        margin: .5rem 1rem .5rem 0;
         position: relative;
         float: right;
         list-style: none;
@@ -76,4 +116,11 @@ header {
     background-color: $primary-color;
     @include main-font;
     @include light-text;
+}
+
+.off-screen {
+    @media (max-width: $large) {
+        left: -400px;
+    }
+    @include transition(left .5s ease-in-out);
 }

@@ -74,7 +74,7 @@ module.exports = function (grunt) {
                 tasks: ['uglify', 'clean:temp']
             },
             html: {
-                files: ['development/**/*.html'],
+                files: ['development/**/*.html', 'development/*.ejs'],
                 tasks: ['htmlmin']
             }
         },

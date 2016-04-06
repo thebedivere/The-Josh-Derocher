@@ -1,4 +1,8 @@
 'use strict';
+var toggleMenu = function() {
+ $( '#navigationMenu' ).toggleClass('off-screen');
+    console.log("Toggle 500");
+};
 angular.module('app', [
     'ngRoute',
     'app.home',
@@ -7,11 +11,12 @@ angular.module('app', [
     'app.fiddles',
     'app.game'
 ])
-    .config(['$routeProvider', function ($routeProvider) {
+    .config(['$routeProvider',  function ($routeProvider) {
         $routeProvider.otherwise({
                 redirectTo: '/home',
                 templateUrl: '/components/home/home.html'
             });
+
 }])
 
 .filter('capitalize', function () {
