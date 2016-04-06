@@ -38,11 +38,33 @@ $scope.movieSearch = function() {
     </div>
     <div class="cards">
         <div ng-repeat="movie in movies" class="card">
-            <div class="blog-post">
-                <h4 class="center-text"><a href="http://www.imdb.com/title/{{movie.imdbID}}">{{movie.Title}}</a></h4>
-                <a href="http://www.imdb.com/title/{{movie.imdbID}}"><img src="{{movie.Poster}}"></a>
-            </div>
+                <h4 class="center-text"><a ng-click="modelTrigger(); movieDetails(movie.imdbID);">{{movie.Title}}</a></h4>
+                <a ng-click="modelTrigger(); movieDetails(movie.imdbID);"><img fallback-src="img/noImg.png" ng-src="{{movie.Poster}}"></a>
         </div>
     </div>
-
 </div>
+<div class="model-background" ng-show="openModel == true" ng-click="modelTrigger();">
+    <div class="model" ng-show="openModel == true">
+        <h1>{{movieDetail.Title}}</h1>
+        <h3 ng-if="movieDetail.Genre !='N/A'">{{movieDetail.Genre}}</h3>
+        <h4 ng-if="movieDetail.Metascore !='N/A'"><strong>Metascore:</strong> {{movieDetail.Metascore}}</h4>
+        <p ng-if="movieDetail.Released !='N/A'">
+            <strong>Released:</strong> {{movieDetail.Released}}</p>
+        <p ng-if="movieDetail.Rated !='N/A'">
+            <strong> Rated:</strong> {{movieDetail.Rated}}</p>
+        <p ng-if="movieDetail.Runtime !='N/A'">
+            <strong>Runtime:</strong> {{movieDetail.Runtime}}</p>
+        <p ng-if="movieDetail.Language !='N/A'">
+            <strong>Language:</strong> {{movieDetail.Language}}</p>
+        <p ng-if="movieDetail.Director !='N/A'">
+            <strong>Director:</strong> {{movieDetail.Director}}</p>
+        <p ng-if="movieDetail.Writer !='N/A'">
+            <strong>Writer(s):</strong> {{movieDetail.Writer}}</p>
+        <p ng-if="movieDetail.Actors !='N/A'">
+            <strong>Actors:</strong> {{movieDetail.Actors}}</p>
+        <p ng-if="movieDetail.Awards !='N/A'">
+            <strong>Awards:</strong> {{movieDetail.Awards}}</p>
+        <p ng-if="movieDetail.Plot !='N/A'">{{movieDetail.Plot}}</p>
+        <a ng-click="modelTrigger();"><i class="fa fa-times fa-2x" ng-click="modelTrigger();"></i></a>
+        <p></p>
+    </div>
