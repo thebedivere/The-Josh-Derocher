@@ -1,0 +1,23 @@
+<div class="container">
+        <h1>{{userName}}</h1>
+    <div class="blog-post" ng-if="userToken">
+        <ul>
+            <li><strong>All Users:</strong></li>
+            <li ng-repeat="user in users">
+                {{user.name}}
+                {{user}}
+            </li>
+        </ul>
+        <a ng-click="userLogOut();" class="user-login">Log Out</a>
+    </div>
+    <div class="edit" ng-if="!userToken">
+        <label>You have to be logged in to view this page.</label>
+        <form novalidate>
+            <label for="title">Username</label>
+            <input type="text" id="name" ng-model="formData.name">
+            <label for="password">Password</label>
+            <input type="text" id="password" ng-model="formData.password">
+            <button type="submit" ng-click="authenticateUser();">Submit</button>
+        </form>
+    </div>
+</div>

@@ -7,37 +7,49 @@
         justify-content: space-around;
     }
     .card {
-        img {
-            padding: 0!important;
-            width: 100%;
-            margin: 0 auto;
-            box-sizing: border-box;
-        }
-        .blog-post{
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            h1, h2, h3, h4, h5, h5, img, ul {
-                padding: 1em;
-            }
-            a {
-                padding: 0;
-                color: inherit!important;
-            }
-        }
+        padding: 0!important;
+        box-sizing: border-box;
         text-align: center;
         @include dark-text;
         opacity: 1;
         @include transition(.7s ease-in-out);
         position: relative;
         width: 100%;
-        @media (min-width: $tiny) {
-            width: 225px;
-        }
         min-height: 200px;
         z-index: 2;
         @extend .card;
         background-color: white;
+        @media (min-width: $tiny) {
+            width: 225px;
+        }
+        overflow: hidden;
+        img {
+
+            bottom: 0;
+            display: block;
+            padding: 0!important;
+            margin: 0;
+            box-sizing: border-box;
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h5,
+        img,
+        ul,
+        p {
+            @include dark-text;
+            padding: 1em;
+        }
+        a {
+            padding: 0;
+            color: inherit!important;
+        }
         a,
         h5,
         p,

@@ -22,14 +22,17 @@
                 <li class="large-hide"><a href="tel:+12078080677" title="Give me a call"><i class="fa fa-2x fa-phone"></i></a></li>
                 <li><a href="http://github.com/thebedivere" title="github"><i class="fa fa-2x fa-github"></i></a></li>
             </ul>
-            <nav>
+            <i class="menu-toggle fa fa-bars fa-2x" onclick="toggleMenu();"></i>
+            <nav id="navigationMenu" class="off-screen">
+
                 <ul>
-                    <li><a href="#/home">Home</a></li>
-                    <li><a href="#/home/#work">Work</a></li>
-                    <li><a href="#/home/#resume">Resume</a></li>
-                    <li><a href="#/blog">Blog</a></li>
-                    <li><a href="#/fiddles">Fiddles</a></li>
+                    <li><a href="#/home" onclick="toggleMenu();">Home</a></li>
+                    <li><a href="#/home/#work" onclick="toggleMenu();">Work</a></li>
+                    <li><a href="#/home/#resume" onclick="toggleMenu();">Resume</a></li>
+                    <li><a href="#/blog" onclick="toggleMenu();">Blog</a></li>
+                    <li><a href="#/fiddles" onclick="toggleMenu();">Fiddles</a></li>
                 </ul>
+
             </nav>
         </div>
     </header>

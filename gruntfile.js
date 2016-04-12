@@ -34,10 +34,14 @@ module.exports = function (grunt) {
 
                     'development/bower_components/jquery/dist/jquery.js',
                     'development/bower_components/jquery-ui/jquery-ui.js',
-                    'development/bower_components/angular/angular.annotated.js',
+                    'development/bower_components/angular/angular.js',
                     'development/bower_components/showdown/dist/showdown.js',
                     'development/bower_components/angular-animate/angular-animate.js',
-                    'development/bower_components/angular-route/angular-route.annotated.js',
+                    'development/bower_components/angular-sanitize/angular-sanitize.js',
+                    'development/bower_components/ngEmbed/src/ng-embed.js',
+                    'development/bower_components/angular-lazytube/angular-lazytube.js',
+                    'development/bower_components/angular-cookies/angular-cookies.js',
+                    'development/bower_components/angular-route/angular-route.js',
                     'development/bower_components/handlebars/handlebars.js'
                 ],
                 dest: 'temp/js/scripts.js'
@@ -54,7 +58,7 @@ module.exports = function (grunt) {
                     src: '**/*.js',
                     dest: 'public/js/'
                 }, {
-                    'public/components/modules.min.js': 'development/components/**/*.js',
+                    'public/components/modules.min.js': 'development/components/**/*.js', 'public/js/scripts.js': 'temp/js/scripts.js',
                     'public/app.js': 'development/app.js'
                 }],
 
@@ -71,10 +75,10 @@ module.exports = function (grunt) {
             },
             scripts: {
                 files: ['development/**/*.js'],
-                tasks: ['uglify', 'clean:temp']
+                tasks: ['uglify']
             },
             html: {
-                files: ['development/**/*.html'],
+                files: ['development/**/*.html', 'development/*.ejs'],
                 tasks: ['htmlmin']
             }
         },
@@ -118,7 +122,7 @@ module.exports = function (grunt) {
             }
         }
     });
-    grunt.registerTask('default', ['clean:temp', 'sass', 'cssmin', 'uglify', 'watch']);
+    grunt.registerTask('default', ['sass', 'cssmin', 'concat', 'uglify', 'watch']);
     grunt.registerTask('js', ['concat', 'uglify', 'clean:temp']);
     grunt.registerTask('build', ['clean:build', 'sass', 'cssmin', 'concat', 'uglify', 'htmlmin:build', 'imagemin:build', 'copy', 'clean:temp']);
 };

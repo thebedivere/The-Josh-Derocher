@@ -12,6 +12,8 @@
 @import 'toast';
 @import 'game';
 @import 'cards';
+@import 'model';
+@import 'chat';
 * {
     margin: 0;
     padding: 0;
@@ -95,4 +97,9 @@ ul {
 
 .warning {
     color: $orange!important;
+}
+
+.user-login {
+    float: right;
+    @extend .blog-post;
 }
