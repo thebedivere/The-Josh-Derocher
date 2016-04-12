@@ -75,3 +75,52 @@
         background: darken($primary-color, 10);
     }
 }
+
+
+.giphy {
+    p {
+        margin-bottom: 1em;
+    }
+    padding: 1em;
+    margin: 0;
+    background: white;
+    overflow-x: hidden;
+    border: none;
+    @extend text-style;
+    @include main-font;
+    margin: 1em auto;
+    @include shadow-1;
+    .giphy-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    img {
+        margin: 1em;
+    }
+
+    input {
+        border: 1px solid $primary-color;
+        padding: 1em;
+        width: 100%;
+        margin: 0;
+        background: white;
+        display: inline;
+        box-sizing: border-box;
+    }
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+    /* Track */
+    ::-webkit-scrollbar-track {
+        -webkit-border-radius: 0;
+        border-radius: 0;
+        background: $clouds;
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 0px;
+        border-radius: 0px;
+        background: darken($primary-color, 10);
+    }
+}

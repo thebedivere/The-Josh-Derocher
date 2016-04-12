@@ -22,9 +22,9 @@ angular.module('app.chat', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngEmbed', 'ob
                 $scope.chat = data;
                 var element = document.getElementById("chat-history");
                 element.scrollTop = element.scrollHeight;
-                updateScroll();
+                $scope.updateScroll();
             }).error(function (data, status) {
-                //console.log(data, status);
+                console.log(data, status);
                 $scope.chat = [];
             });
         };
@@ -40,13 +40,14 @@ angular.module('app.chat', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngEmbed', 'ob
                     $scope.formData = {};
                     $timeout(callTimeout, 5000);
                     getChat();
-                    updateScroll();
+                    $scope.updateScroll();
                 })
                 .error(function (data) {
                     console.log('Error: ' + data);
                     $timeout(callTimeout, 5000);
                 });
         };
+
         function callTimeout() {
             $scope.submissionSuccess = false;
         }
@@ -60,15 +61,18 @@ angular.module('app.chat', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngEmbed', 'ob
             //console.log($scope.userToken);
         };
         $scope.getToken();
+
         function callTimeout() {
             $scope.submissionSuccess = false;
         }
-        function updateScroll() {
+
+        $scope.updateScroll = function {
             if (document.getElementById("chat-history") != undefined) {
                 var element = document.getElementById("chat-history");
                 element.scrollTop = element.scrollHeight;
             }
         }
+
         function hashCode(str) { // java String#hashCode
             var hash = 0;
             for (var i = 0; i < str.length; i++) {
@@ -76,6 +80,7 @@ angular.module('app.chat', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngEmbed', 'ob
             }
             return hash;
         }
+
         function intToRGB(i) {
             var c = (i & 0x00FFFFFF)
                 .toString(16)
@@ -84,6 +89,32 @@ angular.module('app.chat', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngEmbed', 'ob
         }
         angular.element(document).ready(function () {
             getChat();
-            updateScroll();
+            $scope.updateScroll();
         });
+
+        // giphy search
+
+        var giphyKey = "dc6zaTOxFJmzC";
+
+        $scope.giphySearch = function (search) {
+            $http.get('http://api.giphy.com/v1/gifs/search?q=' + search + '&api_key=dc6zaTOxFJmzC')
+                .success(function (data) {
+                    $scope.giphys = data.data;
+                })
+                .error(function (data, status) {
+                    console.log(data, status);
+                    $scope.giphys = [];
+                })
+        };
+        $scope.giphyTranslate = function (search) {
+            $http.get('http://api.giphy.com/v1/gifs/translate?s=' + search + '&api_key=dc6zaTOxFJmzC')
+                .success(function (data) {
+                console.log(data);
+                    $scope.giphys = data.data;
+                })
+                .error(function (data, status) {
+                    console.log(data, status);
+                    $scope.giphys = [];
+                })
+        };
             }]);
