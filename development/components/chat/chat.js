@@ -66,7 +66,7 @@ angular.module('app.chat', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngEmbed', 'ob
             $scope.submissionSuccess = false;
         }
 
-        $scope.updateScroll = function {
+        $scope.updateScroll = function() {
             if (document.getElementById("chat-history") != undefined) {
                 var element = document.getElementById("chat-history");
                 element.scrollTop = element.scrollHeight;
