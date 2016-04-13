@@ -1,0 +1,116 @@
+input,
+textarea,
+form,
+label {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 1em auto;
+    line-height: 1.5;
+    display: block;
+    @include main-font;
+    @include color-text;
+}
+
+input,
+textarea {
+    padding: 1em;
+    border: solid 1px $asbestos;
+    background-color: $white!important;
+    &:focus {
+        border: solid 1px $primary-color;
+        outline: solid 1px $primary-color;
+    }
+}
+
+button {
+    background-color: $primary-color;
+    @include main-font;
+    @include light-text;
+    padding: 1em;
+    transition: box-shadow 0.4s ease;
+    &:focus,
+    &:active {
+        @include shadow-2;
+        border: none !important;
+        outline: none !important;
+    }
+    &:disabled {
+        background-color: $asbestos;
+    }
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 45px;
+    input,
+    textarea {
+
+        font-size: 18px!important;
+        background: transparent!important;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        border: none;
+        border-bottom: 1px solid $light-grey;
+        &:focus {
+            outline: none;
+        }
+
+    }
+    textarea {
+        overflow: hidden;
+        padding: 15px 10px 10px 5px;
+    }
+    label {
+        color: $primary-color;
+        font-size: 18px!important;
+        position: absolute;
+        pointer-events: none;
+        left: 0;
+        top: -.6em;
+        @include transition(0.2s ease all);
+    }
+    input:focus ~ label,
+    input:valid ~ label,
+    textarea:focus ~ label,
+    textarea:valid ~ label {
+        top: -2.5em;
+        font-size: 14px!important;
+        @include transition(0.2s ease all);
+    }
+    textarea:focus ~ label,
+    input:focus ~ label {
+        color: $alt-color;
+    }
+    input:not(:focus):valid ~ label,
+    textarea:not(:focus):valid ~ label {
+        color: $light-grey;
+    }
+    .bar {
+        position: relative;
+        display: block;
+        width: 100%;
+        bottom: 0;
+        &:after,
+        &:before {
+            content: '';
+            height: 2px;
+            width: 0;
+            bottom: 1em;
+            position: absolute;
+            background: $alt-color;
+            @include transition(0.2s ease all);
+        }
+        &:before {
+            left: 50%;
+        }
+        &:after {
+            right: 50%;
+        }
+    }
+    input:focus ~ .bar:before,
+    input:focus ~ .bar:after,
+    textarea:focus ~ .bar:before,
+    textarea:focus ~ .bar:after {
+        width: 50%;
+    }
+}

@@ -93,4 +93,4 @@ angular.module('app', [
         }
     }
     return fallbackSrc;
-});;
+});

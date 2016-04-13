@@ -1,5 +1,5 @@
 .blog-post {
-    margin: 1em auto;
+    margin: 2em auto;
     max-width: 700px;
     padding: 1em;
     @extend .post-formatting;
@@ -10,50 +10,11 @@
     }
 }
 
-input,
-textarea,
-form,
-label {
-    width: 100%;
-    box-sizing: border-box;
-    margin: 1em auto;
-    line-height: 1.5;
-    display: block;
-    @include main-font;
-    @include color-text;
-}
 
-input,
-textarea {
-    padding: 1em;
-    border: solid 1px $asbestos;
-    background-color: #eee;
-    &:focus {
-        border: solid 1px $primary-color;
-        outline: solid 1px $primary-color;
-    }
-}
-
-button {
-    background-color: $primary-color;
-    @include main-font;
-    @include light-text;
-    padding: 1em;
-    transition: box-shadow 0.4s ease;
-    &:focus,
-    &:active {
-        @include shadow-2;
-        border: none !important;
-        outline: none !important;
-    }
-    &:disabled {
-        background-color: $asbestos;
-    }
-}
 
 .preview {
-    margin: 1em auto;
-    background-color: #eee;
+    margin: 3em auto;
+    background-color: $white;
     @include shadow-1;
     padding: 1em;
     @extend .post-formatting;
