@@ -54,6 +54,12 @@
                 </ul>
             </div>
         </footer>
+        <div class="toast-area" ng-controller="ToastCtrl">
+            <div class="toast" ng-repeat="message in messages track by $index" onclick="$(this).remove()" id="toast-{{$index}}">
+                {{ message }}
+                <i class="fa fa-times"></i>
+            </div>
+        </div>
     </div>
 </body>
 

@@ -18,7 +18,6 @@ angular.module('app.blog', ['ngRoute'])
 }])
 
 .controller('BlogCtrl', ['$scope', 'Blog', '$log', function ($scope, Blog, $log) {
-    $scope.working = true;
     Blog.success(function (data) {
         $scope.blogSuccess = true;
         $scope.blog = data;

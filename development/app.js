@@ -12,6 +12,7 @@ angular.module('app', [
     , 'app.game'
     , 'app.user'
     , 'app.chat'
+    , 'app.toast'
 ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({
