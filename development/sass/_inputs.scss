@@ -40,11 +40,12 @@ button {
 }
 
 .input-group {
+    margin: .5em;
     position: relative;
     margin-bottom: 45px;
     input,
     textarea {
-
+        position: relative;
         font-size: 18px!important;
         background: transparent!important;
         padding: 10px 10px 10px 5px;
@@ -66,14 +67,15 @@ button {
         position: absolute;
         pointer-events: none;
         left: 0;
-        top: -.6em;
+        top: -.6em!important;
         @include transition(0.2s ease all);
     }
     input:focus ~ label,
     input:valid ~ label,
     textarea:focus ~ label,
     textarea:valid ~ label {
-        top: -2.5em;
+        position: absolute;
+        top: -2.5em!important;
         font-size: 14px!important;
         @include transition(0.2s ease all);
     }
@@ -86,7 +88,7 @@ button {
         color: $light-grey;
     }
     .bar {
-        position: relative;
+        position: absolute;
         display: block;
         width: 100%;
         bottom: 0;
@@ -95,7 +97,7 @@ button {
             content: '';
             height: 2px;
             width: 0;
-            bottom: 1em;
+            bottom: 0;
             position: absolute;
             background: $alt-color;
             @include transition(0.2s ease all);

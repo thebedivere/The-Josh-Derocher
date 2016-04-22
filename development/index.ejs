@@ -25,15 +25,14 @@
                     <li class="large-hide"><a href="tel:+12078080677" title="Give me a call"><i class="fa fa-2x fa-phone"></i></a></li>
                     <li><a href="http://github.com/thebedivere" title="github"><i class="fa fa-2x fa-github"></i></a></li>
                 </ul>
-                <i class="menu-toggle fa fa-bars fa-2x" onclick="toggleMenu();"></i>
-                <nav id="navigationMenu" class="off-screen">
-
+                <i class="menu-toggle fa fa-bars fa-2x" onclick="showMenu();"></i>
+                <nav id="navigationMenu" class="menu-out">
                     <ul>
-                        <li><a href="#/home" onclick="toggleMenu();">Home</a></li>
-                        <li><a href="#/home/#work" onclick="toggleMenu();">Work</a></li>
-                        <li><a href="#/home/#resume" onclick="toggleMenu();">Resume</a></li>
-                        <li><a href="#/blog" onclick="toggleMenu();">Blog</a></li>
-                        <li><a href="#/fiddles" onclick="toggleMenu();">Fiddles</a></li>
+                        <li><a href="#/home" onclick="hideMenu();">Home</a></li>
+                        <li><a href="#/home/#work" onclick="hideMenu();">Work</a></li>
+                        <li><a href="#/home/#resume" onclick="hideMenu();">Resume</a></li>
+                        <li><a href="#/blog" onclick="hideMenu();">Blog</a></li>
+                        <li><a href="#/fiddles" onclick="hideMenu();">Fiddles</a></li>
                     </ul>
 
                 </nav>
@@ -54,6 +53,7 @@
                 </ul>
             </div>
         </footer>
+        <div id="screen-darken" class="screen-darken hidden" onclick="hideMenu();"></div>
         <div class="toast-area" ng-controller="ToastCtrl">
             <div class="toast" ng-repeat="message in messages track by $index" onclick="$(this).remove()" id="toast-{{$index}}">
                 {{ message }}

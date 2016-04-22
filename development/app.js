@@ -1,7 +1,13 @@
 'use strict';
-var toggleMenu = function () {
-    $('#navigationMenu').toggleClass('off-screen');
-    console.log("Toggle 500");
+var showMenu = function () {
+    $('#navigationMenu').addClass('menu-in');
+    $('#navigationMenu').removeClass('menu-out');
+    $('#screen-darken').removeClass('hidden');
+};
+var hideMenu = function () {
+    $('#navigationMenu').addClass('menu-out');
+    $('#navigationMenu').removeClass('menu-in');
+    $('#screen-darken').addClass('hidden');
 };
 angular.module('app', [
     'ngRoute'
