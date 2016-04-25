@@ -1,7 +1,5 @@
-input,
-textarea,
-form,
-label {
+form {
+    padding: 2em;
     width: 100%;
     box-sizing: border-box;
     margin: 1em auto;
@@ -9,17 +7,6 @@ label {
     display: block;
     @include main-font;
     @include color-text;
-}
-
-input,
-textarea {
-    padding: 1em;
-    border: solid 1px $asbestos;
-    background-color: $white!important;
-    &:focus {
-        border: solid 1px $primary-color;
-        outline: solid 1px $primary-color;
-    }
 }
 
 button {
@@ -40,55 +27,47 @@ button {
 }
 
 .input-group {
-    margin: .5em;
-    position: relative;
-    margin-bottom: 45px;
-    input,
-    textarea {
-        position: relative;
+    height: 2em;
+    box-sizing: border-box;
+    overflow: visible;
+    margin: 2rem 0;
+    input {
+        width: 100%;
         font-size: 18px!important;
         background: transparent!important;
-        padding: 10px 10px 10px 5px;
-        display: block;
         border: none;
         border-bottom: 1px solid $light-grey;
         &:focus {
             outline: none;
         }
-
-    }
-    textarea {
-        overflow: hidden;
-        padding: 15px 10px 10px 5px;
     }
     label {
         color: $primary-color;
         font-size: 18px!important;
-        position: absolute;
+        position: relative;
         pointer-events: none;
         left: 0;
-        top: -.6em!important;
+        top: -2rem;
         @include transition(0.2s ease all);
     }
     input:focus ~ label,
-    input:valid ~ label,
-    textarea:focus ~ label,
-    textarea:valid ~ label {
-        position: absolute;
-        top: -2.5em!important;
+    input:valid ~ label {
+        position: relative;
+        top: -3rem!important;
         font-size: 14px!important;
         @include transition(0.2s ease all);
     }
-    textarea:focus ~ label,
+
     input:focus ~ label {
         color: $alt-color;
     }
-    input:not(:focus):valid ~ label,
-    textarea:not(:focus):valid ~ label {
+
+    input:not(:focus):valid ~ label {
         color: $light-grey;
     }
+
     .bar {
-        position: absolute;
+        position: relative;
         display: block;
         width: 100%;
         bottom: 0;
@@ -109,10 +88,87 @@ button {
             right: 50%;
         }
     }
+
     input:focus ~ .bar:before,
-    input:focus ~ .bar:after,
+    input:focus ~ .bar:after {
+        width: 50%;
+    }
+
+}
+
+
+.input-area-group {
+    position: relative;
+    min-height: 2em;
+    box-sizing: border-box;
+    overflow: visible;
+    margin: 2rem 0;
+    textarea {
+        width: 100%;
+        font-size: 18px!important;
+        background: transparent!important;
+        border: none;
+        border-bottom: 1px solid $light-grey;
+        &:focus {
+            outline: none;
+        }
+    }
+    textarea {
+        overflow: hidden;
+        //padding: 15px 10px 10px 5px;
+    }
+    label {
+        color: $primary-color;
+        font-size: 18px!important;
+        position: relative;
+        pointer-events: none;
+        left: 0;
+        top: -2rem;
+        @include transition(0.2s ease all);
+    }
+
+    textarea:focus ~ label,
+    textarea:valid ~ label {
+        position: relative;
+        top: -2rem!important;
+        font-size: 14px!important;
+        @include transition(0.2s ease all);
+    }
+
+    textarea:focus ~ label {
+        color: $alt-color;
+    }
+
+    textarea:not(:focus):valid ~ label {
+        color: $light-grey;
+    }
+
+    .bar {
+        position: relative;
+        display: block;
+        width: 100%;
+        bottom: .4rem;
+        &:after,
+        &:before {
+            content: '';
+            height: 2px;
+            width: 0;
+            bottom: 0;
+            position: absolute;
+            background: $alt-color;
+            @include transition(0.2s ease all);
+        }
+        &:before {
+            left: 50%;
+        }
+        &:after {
+            right: 50%;
+        }
+    }
+
     textarea:focus ~ .bar:before,
     textarea:focus ~ .bar:after {
         width: 50%;
     }
+
 }
