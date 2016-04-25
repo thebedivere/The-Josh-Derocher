@@ -124,12 +124,12 @@ app.get('/', function (req, res) {
 app.get('/setup', function (req, res) {
     // create a sample user
     var josh = new User({
-        name: 'admin'
-        , password: 'password'
+        name: 'josh'
+        , password: 'password123'
         , admin: true
     });
     // save the sample user
-    nick.save(function (err) {
+    josh.save(function (err) {
         if (err) throw err;
         console.log('User saved successfully');
         res.json({
