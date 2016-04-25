@@ -1,15 +1,33 @@
 'use strict';
 module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
-    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.initConfig({
+        // Project configuration
+        dirs: {
+            // Build folder
+            output: 'public',
+            // Source folder
+            source: 'development',
+            // Bower components folder
+            bower: 'development/bower_components'
+        },
+        // Create bower config file
+        pkg: grunt.file.readJSON('package.json'),
+        "file-creator": {
+            "bower": {
+                ".bowerrc": function (fs, fd, done) {
+                    fs.writeSync(fd, '{"directory": "development/bower_components/","analytics": false,"timeout": 120000,"registry": { "search": ["https://bower.herokuapp.com" ]}}');
+                    done();
+                }
+            },
+        },
         sass: {
             options: {
                 sourceMap: true
             },
             dist: {
                 files: {
-                    './temp/css/main.css': './development/sass/main.scss'
+                    './temp/css/main.css': './<%= dirs.source %>/sass/main.scss'
                 }
             }
         },
@@ -20,7 +38,7 @@ module.exports = function (grunt) {
             },
             target: {
                 files: {
-                    './public/css/main.min.css': './temp/css/main.css'
+                    './<%= dirs.output %>/css/main.min.css': './temp/css/main.css'
                 }
             }
         },
@@ -31,18 +49,17 @@ module.exports = function (grunt) {
             },
             dist: {
                 src: [
-
-                    'development/bower_components/jquery/dist/jquery.js',
-                    'development/bower_components/jquery-ui/jquery-ui.js',
-                    'development/bower_components/angular/angular.js',
-                    'development/bower_components/showdown/dist/showdown.js',
-                    'development/bower_components/angular-animate/angular-animate.js',
-                    'development/bower_components/angular-sanitize/angular-sanitize.js',
-                    'development/bower_components/ngEmbed/src/ng-embed.js',
-                    'development/bower_components/angular-lazytube/angular-lazytube.js',
-                    'development/bower_components/angular-cookies/angular-cookies.js',
-                    'development/bower_components/angular-route/angular-route.js',
-                    'development/bower_components/handlebars/handlebars.js'
+                    '<%= dirs.bower %>/jquery/dist/jquery.js',
+                    '<%= dirs.bower %>/jquery-ui/jquery-ui.js',
+                    '<%= dirs.bower %>/angular/angular.js',
+                    '<%= dirs.bower %>/showdown/dist/showdown.js',
+                    '<%= dirs.bower %>/angular-animate/angular-animate.js',
+                    '<%= dirs.bower %>/angular-sanitize/angular-sanitize.js',
+                    '<%= dirs.bower %>/ngEmbed/src/ng-embed.js',
+                    '<%= dirs.bower %>/angular-lazytube/angular-lazytube.js',
+                    '<%= dirs.bower %>/angular-cookies/angular-cookies.js',
+                    '<%= dirs.bower %>/angular-route/angular-route.js',
+                    '<%= dirs.bower %>/handlebars/handlebars.js'
                 ],
                 dest: 'temp/js/scripts.js'
             }
@@ -54,18 +71,19 @@ module.exports = function (grunt) {
             my_target: {
                 files: [{
                     expand: true,
-                    cwd: 'development/js/',
+                    cwd: '<%= dirs.source %>/js/',
                     src: '**/*.js',
-                    dest: 'public/js/'
+                    dest: '<%= dirs.output %>/js/'
                 }, {
-                    'public/components/modules.min.js': 'development/components/**/*.js', 'public/js/scripts.js': 'temp/js/scripts.js',
-                    'public/app.js': 'development/app.js'
+                    '<%= dirs.output %>/components/modules.min.js': '<%= dirs.source %>/components/**/*.js',
+                    '<%= dirs.output %>/js/scripts.js': 'temp/js/scripts.js',
+                    '<%= dirs.output %>/app.js': '<%= dirs.source %>/app.js'
                 }],
 
             }
         },
         clean: {
-            build: ['public/**/**', 'temp/**/**'],
+            build: ['<%= dirs.output %>/**/**', 'temp/**/**'],
             temp: ['temp/**/**']
         },
         watch: {
@@ -74,11 +92,11 @@ module.exports = function (grunt) {
                 tasks: ['sass', 'cssmin', 'clean:temp']
             },
             scripts: {
-                files: ['development/**/*.js'],
+                files: ['<%= dirs.source %>/**/*.js'],
                 tasks: ['uglify']
             },
             html: {
-                files: ['development/**/*.html', 'development/*.ejs'],
+                files: ['<%= dirs.source %>/**/*.html', '<%= dirs.source %>/*.ejs'],
                 tasks: ['htmlmin']
             }
         },
@@ -90,23 +108,23 @@ module.exports = function (grunt) {
                 },
                 files: [{
                         expand: true,
-                        cwd: 'development/components/',
+                        cwd: '<%= dirs.source %>/components/',
                         src: '**/*.html',
-                        dest: 'public/components/'
+                        dest: '<%= dirs.output %>/components/'
                 },
                     {
                         expand: true,
-                        cwd: 'development/',
+                        cwd: '<%= dirs.source %>/',
                         src: '**/*.ejs',
-                        dest: 'public/'
+                        dest: '<%= dirs.output %>/'
                 }]
             }
         },
         copy: {
             build: {
                 files: [{
-                    'public/favicon.ico': 'development/favicon.ico',
-                    'public/joshderocherresume.pdf': 'development/joshderocherresume.pdf'
+                    '<%= dirs.output %>/favicon.ico': '<%= dirs.source %>/favicon.ico',
+                    '<%= dirs.output %>/joshderocherresume.pdf': '<%= dirs.source %>/joshderocherresume.pdf'
                 }]
             }
         },
@@ -114,9 +132,9 @@ module.exports = function (grunt) {
             build: {
                 files: [{
                         expand: true,
-                        cwd: 'development/',
+                        cwd: '<%= dirs.source %>/',
                         src: ['*.{png,jpg,gif}', 'img/*.{png,jpg,gif}'],
-                        dest: 'public/'
+                        dest: '<%= dirs.output %>/'
            }
            ]
             }

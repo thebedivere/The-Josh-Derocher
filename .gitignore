@@ -5,3 +5,5 @@ development/bower_components/*
 /public/**/*
 /public/index.ejs
 /public/error.ejs
+/public/app.js
+/public/css/main.min.css

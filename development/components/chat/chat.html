@@ -1,40 +1,48 @@
-<div class="container" ng-if="userToken">
-    <div class="chat">
-        <div class="chat-history" id="chat-history">
-            <ul>
-                <li ng-repeat="chat in chat |  orderBy: '-timestamp' | limitTo: limit | orderBy: 'timestamp'">
-                    <span class="{{ chat.userName }}">{{chat.userName | capitalize }}:</span>
-                    <span class="chat-message">
+<div ng-if="userToken">
+    <div class="row">
+        <div class="chat">
+            <div class="chat-history" id="chat-history">
+                <ul id="chat-messages">
+                    <li ng-repeat="chat in chat |  orderBy: '-timestamp' | limitTo: limit | orderBy: 'timestamp'">
+                        <span class="{{ chat.userName }}">{{chat.userName | capitalize }}:</span>
+                        <span class="chat-message">
                         <span ng-bind-html="chat.message | image "></span>
-                    </span>
-                    <span class="chat-timestamp"> {{chat.timestamp | date : 'shortTime'}}</span>
-                </li>
-            </ul>
+                        </span>
+                        <span class="chat-timestamp"> {{chat.timestamp | date : 'shortTime'}}</span>
+                    </li>
+                </ul>
+            </div>
+            <form novalidate>
+                <input type="text" id="message" ng-model="formData.message" ng-change="giphyTranslate(formData.message)" autofocus>
+                <button type="submit" ng-click="sendMessage()">Send</button>
+            </form>
         </div>
-        <form novalidate>
-            <input type="text" id="message" ng-model="formData.message" ng-change="giphyTranslate(formData.message)" autofocus>
-            <button type="submit" ng-click="sendMessage()">Send</button>
-        </form>
-    </div>
-    <div class="giphy">
-    <p>Search giphy</p>
-        <input type="text" ng-model="searchPhrase" ng-change="giphySearch(searchPhrase)" >
-        <div class="giphy-container">
-            <div ng-repeat="giphy in giphys">
-            <img ng-if="giphy.images.downsized.url" src="{{giphy.images.downsized.url}}" ng-click="formData.message = giphy.images.original.url; sendMessage();" href="#chat-history">
-            <img ng-if="giphy.fixed_height_downsampled.url" src="{{giphy.fixed_height_downsampled.url}}" ng-click="formData.message = giphy.original.url; sendMessage();" href="#chat-history">
+
+        <div class="giphy">
+<text-input label="Search Giphy" model="searchPhrase" run-this="giphySearch(searchPhrase);"></text-input>
+<!--
+ change="giphySearch(searchPhrase)"
+
+<div class="input-group">
+                <input type="text" ng-model="searchPhrase" ng-change="giphySearch(searchPhrase)" ng-minlength="1" required>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Search giphy</label>
+            </div>-->
+            <div class="giphy-container row">
+                <div ng-repeat="giphy in giphys">
+                    <img ng-if="giphy.images.downsized.url" src="{{giphy.images.downsized.url}}" ng-click="formData.message = giphy.images.original.url; sendMessage();" href="#chat-history">
+                    <img ng-if="giphy.fixed_height_downsampled.url" src="{{giphy.fixed_height_downsampled.url}}" ng-click="formData.message = giphy.original.url; sendMessage();" href="#chat-history">
+                </div>
             </div>
         </div>
     </div>
-    <div class="user-login">
-        <a ng-click="userLogOut();" href="/#/user">Log Out</a>
+</div>
+<div ng-if="!userToken">
+    <div class="container">
+        <div class="chat">
+            <p>You have to be logged in to use chat.</p>
+        </div>
     </div>
 </div>
-<div class="container" ng-if="!userToken">
-    <div class="blog-post">
-    <div class="user-login">
-        <p>You have to be logged in to view this page.</p>
-        <a href="/#/user">Log in</a>
-    </div>
-    </div>
-</div>
+<user-loging></user-loging>

@@ -1,6 +1,26 @@
+@mixin styled-scrollbar {
+    ::-webkit-scrollbar {
+        width: 12px!important;
+    }
+    /* Track */
+    ::-webkit-scrollbar-track {
+        -webkit-border-radius: 0!important;
+        border-radius: 0!important;
+        background: $clouds!important;
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 0px!important;
+        border-radius: 0px!important;
+        background: darken($primary-color, 10)!important;
+    }
+}
+
 .chat-history {
-    height: 80vh;
-    margin: 0;
+    @include styled-scrollbar;
+    @include shadow-1;
+    max-height: 79vh;
+    margin: 0 auto 1em;
     background: white;
     overflow-x: hidden;
     border: none;
@@ -31,15 +51,26 @@
     .roxane {
         color: blue;
     }
-    .josh, .roxane {
+    .josh,
+    .roxane {
         margin: 1em;
     }
 }
 
 .chat {
-    @include shadow-1;
-    form {
+    @include styled-scrollbar;
+    height: 80vh;
+    @media (min-width: $mobile) {
+        width: 70%;
         margin: 0;
+    }
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+    form {
+        @include shadow-1;
+        margin: 0!important;
+        padding: 0!important;
         display: flex;
         input {
             border: 1px solid $primary-color;
@@ -49,7 +80,6 @@
             background: white;
             display: inline;
             box-sizing: border-box;
-
         }
         button {
             padding: 1em;
@@ -59,47 +89,45 @@
             box-sizing: border-box;
         }
     }
-    ::-webkit-scrollbar {
-        width: 12px;
-    }
-    /* Track */
-    ::-webkit-scrollbar-track {
-        -webkit-border-radius: 0;
-        border-radius: 0;
-        background: $clouds;
-    }
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-        -webkit-border-radius: 0px;
-        border-radius: 0px;
-        background: darken($primary-color, 10);
+    p {
+        @include main-font;
+        @include dark-text;
     }
 }
 
-
 .giphy {
+    @include styled-scrollbar;
+    height: 80vh;
+    @media (min-width: $mobile) {
+        width: 24%;
+        margin: 0 0 0 .5em;
+        display: block;
+    }
+    width: 100%;
+    margin: 5em auto 1em;
+    @include transition(0.2s ease all);
     p {
         margin-bottom: 1em;
     }
-    padding: 1em;
-    margin: 0;
+    padding: 2em 1em;
     background: white;
     overflow-x: hidden;
     border: none;
     @extend text-style;
     @include main-font;
-    margin: 1em auto;
     @include shadow-1;
     .giphy-container {
+        @include styled-scrollbar;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
     img {
         margin: 1em;
+        max-width: 150px;
+        max-height: 150px;
     }
-
-    input {
+    /*input {
         border: 1px solid $primary-color;
         padding: 1em;
         width: 100%;
@@ -107,20 +135,6 @@
         background: white;
         display: inline;
         box-sizing: border-box;
-    }
-    ::-webkit-scrollbar {
-        width: 12px;
-    }
-    /* Track */
-    ::-webkit-scrollbar-track {
-        -webkit-border-radius: 0;
-        border-radius: 0;
-        background: $clouds;
-    }
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-        -webkit-border-radius: 0px;
-        border-radius: 0px;
-        background: darken($primary-color, 10);
-    }
+    }*/
 }
+

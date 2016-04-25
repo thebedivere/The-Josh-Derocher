@@ -37,6 +37,7 @@
 }
 
 .hidden {
+    visibility: hidden;
     opacity: 0;
         @include transition(.7s linear);
     p {

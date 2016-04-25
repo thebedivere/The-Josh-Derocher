@@ -11,18 +11,18 @@ angular.module('app.chat', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngEmbed', 'ob
         })
 }])
     .controller('ChatCtrl', ['$scope', '$http', '$log', '$timeout', '$cookies', '$interval', '$routeParams', function ($scope, $http, $log, $timeout, $cookies, $interval, $routeParams) {
+        // chat settings
         $scope.chatLimit = $routeParams.limit;
-        console.log('Chat limit: ' + $scope.chatLimit);
-        $scope.getColor = function (name) {
-            return ('color: ' + intToRGB(hashCode(name)));
+        if ($scope.chatLimit == null || undefined) {
+            $scope.chatLimit = 25;
         };
-        //get chat messages\
+        //get chat messages
         function getChat() {
             $http.get('/chat/' + $scope.chatLimit).success(function (data) {
-                $scope.chat = data;
-                var element = document.getElementById("chat-history");
-                element.scrollTop = element.scrollHeight;
                 $scope.updateScroll();
+                if (data != $scope.chat) {
+                    $scope.chat = data;
+                }
             }).error(function (data, status) {
                 console.log(data, status);
                 $scope.chat = [];
@@ -30,17 +30,17 @@ angular.module('app.chat', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngEmbed', 'ob
         };
         $interval(function () {
             getChat();
-        }, 100000);
+        }, 10000);
+        // Send chat
         $scope.formData = {};
         $scope.sendMessage = function () {
             $scope.formData.userName = $scope.userName;
             $http.post('/chat', $scope.formData)
                 .success(function (data) {
-                    console.log($scope.formData);
                     $scope.formData = {};
                     $timeout(callTimeout, 5000);
                     getChat();
-                    $scope.updateScroll();
+                    $scope.forceScroll();
                 })
                 .error(function (data) {
                     console.log('Error: ' + data);
@@ -48,31 +48,29 @@ angular.module('app.chat', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngEmbed', 'ob
                 });
         };
 
-        function callTimeout() {
-            $scope.submissionSuccess = false;
-        }
-        $scope.userLogOut = function () {
-            $cookies.remove('userToken');
-            $cookies.remove('userName');
-        };
-        $scope.getToken = function () {
-            $scope.userToken = $cookies.get('userToken');
-            $scope.userName = $cookies.get('userName');
-            //console.log($scope.userToken);
-        };
-        $scope.getToken();
-
-        function callTimeout() {
-            $scope.submissionSuccess = false;
-        }
-
-        $scope.updateScroll = function() {
+        // Keep chat scrolled to latest
+        $scope.forceScroll = function () {
             if (document.getElementById("chat-history") != undefined) {
                 var element = document.getElementById("chat-history");
                 element.scrollTop = element.scrollHeight;
-            }
-        }
 
+            };
+        };
+        $scope.forceScroll();
+        $scope.updateScroll = function () {
+            $scope.chatHeight = $('#chat-history').scrollTop() + $('#chat-history').height();
+            if (
+                ($scope.chatHeight <= $('#chat-messages').height()) && (($scope.chatHeight + 500) >= $('#chat-messages').height()) || $('#chat-history').scrollTop() == 0) {
+                if (document.getElementById("chat-history") != undefined) {
+                    var element = document.getElementById("chat-history");
+                    element.scrollTop = element.scrollHeight;
+                }
+            }
+        };
+        $interval(function () {
+            $scope.updateScroll();
+        }, 1000);
+        // Create color based on username
         function hashCode(str) { // java String#hashCode
             var hash = 0;
             for (var i = 0; i < str.length; i++) {
@@ -87,17 +85,13 @@ angular.module('app.chat', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngEmbed', 'ob
                 .toUpperCase();
             return "00000".substring(0, 6 - c.length) + c;
         }
-        angular.element(document).ready(function () {
-            getChat();
-            $scope.updateScroll();
-        });
-
+        $scope.getColor = function (name) {
+            return ('color: ' + intToRGB(hashCode(name)));
+        };
         // giphy search
-
         var giphyKey = "dc6zaTOxFJmzC";
-
         $scope.giphySearch = function (search) {
-            $http.get('http://api.giphy.com/v1/gifs/search?q=' + search + '&api_key=dc6zaTOxFJmzC')
+            $http.get('http://api.giphy.com/v1/gifs/search?q=' + search + '&api_key=dc6zaTOxFJmzC&limit=30')
                 .success(function (data) {
                     $scope.giphys = data.data;
                 })
@@ -109,7 +103,7 @@ angular.module('app.chat', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngEmbed', 'ob
         $scope.giphyTranslate = function (search) {
             $http.get('http://api.giphy.com/v1/gifs/translate?s=' + search + '&api_key=dc6zaTOxFJmzC')
                 .success(function (data) {
-                console.log(data);
+                    console.log(data);
                     $scope.giphys = data.data;
                 })
                 .error(function (data, status) {
@@ -117,4 +111,41 @@ angular.module('app.chat', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngEmbed', 'ob
                     $scope.giphys = [];
                 })
         };
+        // user management
+        $scope.userLogOut = function () {
+            $cookies.remove('userToken');
+            $cookies.remove('userName');
+        };
+        $scope.getToken = function () {
+            $scope.userToken = $cookies.get('userToken');
+            $scope.userName = $cookies.get('userName');
+            //console.log($scope.userToken);
+        };
+        $scope.getToken();
+
+        function callTimeout() {
+            $scope.submissionSuccess = false;
+        }
+        // Log in model
+        $scope.openModel = false;
+        $scope.modelTrigger = function () {
+            if ($scope.openModel == true) {
+                $scope.openModel = false;
+            } else {
+                $scope.openModel = true;
+            };
+        };
+        // Run scripts when document is loaded
+        angular.element(document).ready(function () {
+            getChat();
+            $scope.updateScroll();
+        });
+        $scope.reloadRoute = function () {
+            window.location.reload();
+        }
+
+        $scope.test = function (text) {
+            console.log(text);
+        };
+        // End of controller
             }]);
