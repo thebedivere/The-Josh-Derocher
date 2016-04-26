@@ -7,3 +7,6 @@ development/bower_components/*
 /public/error.ejs
 /public/app.js
 /public/css/main.min.css
+
+public/app.js
+public/app.js
