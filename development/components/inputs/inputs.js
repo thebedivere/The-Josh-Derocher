@@ -13,6 +13,19 @@ angular.module('app.inputs', [])
             }
         };
     })
+
+.directive('passwordInput', function () {
+        return {
+            restrict: 'AE',
+            replace: 'true',
+            templateUrl: './components/inputs/password.html',
+            scope: {
+                label: '@',
+                model: '=',
+                runThis: '&'
+            }
+        };
+    })
     .directive('textArea', function () {
         return {
             restrict: 'AE',
