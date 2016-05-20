@@ -40,20 +40,16 @@ angular.module('app.edit', ['ngRoute'])
         }
 
         // function to expand textarea to match content
-        $scope.autoExpand = function (e) {
-            var element = typeof e === 'object' ? e.target : document.getElementById(e);
-            console.log(element.scrollHeight);
-            var scrollHeight = element.scrollHeight - 20;
-            if (scrollHeight < 79) {
-                scrollHeight = 79
-            }
-            element.style.height = scrollHeight + "px";
-        };
-
-        function expand() {
-            $scope.autoExpand('TextArea');
-        }
-    }])
+        $scope.autoExpand = function (id) {
+            console.log("Auto Expand " + id);
+            document.getElementById(id).addEventListener('keyup', function() {
+            this.style.overflow = 'hidden';
+            this.style.height = 0;
+            this.style.height = this.scrollHeight + 'px';
+        }, false);
+    };
+    //$scope.autoExpand('txtarea');
+}])
     .controller('UpdateCtrl', ['$scope', '$rootScope','$http', '$timeout', '$routeParams', '$location', function ($scope, $rootScope, $http, $timeout, $routeParams, $location) {
         $http.get('/post/' + $routeParams.id)
             .success(function (data) {
@@ -93,5 +89,4 @@ angular.module('app.edit', ['ngRoute'])
                 console.log(data, status);
                 $scope.blog = [];
             });
-
     }]);

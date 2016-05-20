@@ -1,6 +1,7 @@
             <div class="input-area-group">
-                <textarea id="TextArea" ng-model="model" ng-keyup="autoExpand($event)" ng-change="change" required></textarea>
+                <textarea id="txtarea" ng-model="model" ng-change="autoExpand('txtarea');" required></textarea>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>{{ label }}</label>
             </div>
+

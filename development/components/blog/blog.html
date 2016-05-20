@@ -1,8 +1,6 @@
 <div class="container">
 <span id="home"></span>
-
     <div ng-repeat="blog in blog track by $index" ng-if="blog.title" class="blog-post">
-
         <h1><a href="/#/blog/{{ blog._id }}">{{ blog.title | capitalize:true}}</a></h1>
         <small><a href="/#/edit/{{ blog._id }}">Edit this post</a></small>
         <h4>{{ blog.updated_at   | date : 'EEEE,  MMMM dd yyyy'}}</h4>

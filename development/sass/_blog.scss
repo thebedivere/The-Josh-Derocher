@@ -1,8 +1,10 @@
 .blog-post {
     margin: 2em auto;
-    max-width: 700px;
-    padding: 1em;
+   // max-width: 700px;
+    padding: 2em;
     @extend .post-formatting;
+    @include shadow-2;
+    background-color: #fff;
     div {
         margin-bottom: 2em;
         border-bottom: solid 1px $asbestos;

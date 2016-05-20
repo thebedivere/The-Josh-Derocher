@@ -132,3 +132,7 @@
         }
     }
 }
+
+@mixin text-style {
+    @extend .text-style;
+}

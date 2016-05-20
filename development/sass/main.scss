@@ -13,10 +13,9 @@
 @import 'game';
 @import 'cards';
 @import 'model';
-@import 'chat';
 @import 'inputs';
 @import 'grid';
-
+@import 'chat';
 * {
     margin: 0;
     padding: 0;
@@ -24,7 +23,6 @@
     font: inherit;
     vertical-align: baseline;
 }
-
 body {
     font-size: 16px;
     position: relative;

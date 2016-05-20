@@ -104,7 +104,11 @@ button {
     overflow: visible;
     margin: 2rem 0;
     textarea {
+        @include transition(0.2s ease all);
+        height: 5em;
+        overflow: auto;
         width: 100%;
+        resize: vertical;
         font-size: 18px!important;
         background: transparent!important;
         border: none;
@@ -112,10 +116,6 @@ button {
         &:focus {
             outline: none;
         }
-    }
-    textarea {
-        overflow: hidden;
-        //padding: 15px 10px 10px 5px;
     }
     label {
         color: $primary-color;

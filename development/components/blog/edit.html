@@ -1,18 +1,13 @@
 <div class="container">
-    <div class="edit">
+<div ng-if="!userToken">
+    <div class="blog-post">
+        <h3 class="center-text">You have to be logged in create or edit blog posts.</h3>
+    </div>
+</div>
+<div class="edit" ng-if="userToken">
         <form novalidate>
-            <div class="input-group">
-                <input type="text" id="title" ng-model="formData.title" required>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Title</label>
-            </div>
-            <div class="input-area-group">
-                <textarea id="TextArea" ng-model="formData.body" ng-keyup="autoExpand($event)" required></textarea>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Body</label>
-            </div>
+            <text-input model="formData.title" title="Title"></text-input>
+            <text-area model="formData.body" title="body" run-this="autoExpand($event)"></text-area>
             <button type="submit" ng-click="createPost()">Submit</button>
         </form>
         <div class="preview">
@@ -22,3 +17,4 @@
         </div>
     </div>
 </div>
+<user-loging></user-loging>    

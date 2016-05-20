@@ -147,5 +147,6 @@ angular.module('app.chat', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngEmbed', 'ob
         $scope.test = function (text) {
             console.log(text);
         };
+        
         // End of controller
             }]);

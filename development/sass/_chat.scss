@@ -11,7 +11,7 @@
     /* Handle */
     ::-webkit-scrollbar-thumb {
         -webkit-border-radius: 0px!important;
-        border-radius: 0px!important;
+        border-radius: 0!important;
         background: darken($primary-color, 10)!important;
     }
 }
@@ -24,7 +24,7 @@
     background: white;
     overflow-x: hidden;
     border: none;
-    @extend text-style;
+    // @extend text-style;
     @include main-font;
     li {
         box-sizing: border-box;
@@ -113,7 +113,7 @@
     background: white;
     overflow-x: hidden;
     border: none;
-    @extend text-style;
+    @extend .text-style;
     @include main-font;
     @include shadow-1;
     .giphy-container {
